@@ -1,0 +1,37 @@
+[user]
+	name = Kevin Decherf
+	email = kevin@kdecherf.com
+	signingkey = 0x6B4EBA7A
+[url "git://github.com/"]
+        insteadOf = github:
+[url "git+ssh://git@github.com/"]
+        pushInsteadOf = github: 
+
+[alias]
+    a = add
+    d = rm
+    p = push
+    pl = pull
+    st = status --short
+    ci = commit
+    br = branch
+    co = checkout
+    cp = cherry-pick
+    df = diff
+    dfs = diff --stat
+    lg = log -p
+    who = shortlog -s --
+    sh = stash
+    shup = stash pop
+    ds = describe
+    tk = log --name-status --pretty=oneline
+    kick = update-index --assume-unchanged
+    unkick = update-index --no-assume-unchanged
+    s = svn
+
+[color]
+    diff = auto
+    branch = auto
+    status = auto
+[core]
+	eol = lf
