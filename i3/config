@@ -12,13 +12,15 @@
 set $mod Mod4
 
 # font for window titles. ISO 10646 = Unicode
-font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+font -misc-fixed-medium-r-normal--8-80-75-75-C-50-iso10646-1
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec sakura
+
+bindsym $mod+o exec i3lock -i /usr/local/share/i3lock/image.png
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -156,7 +158,7 @@ bar {
 new_window 1pixel
 workspace_layout default
 
-exec --no-startup-id gnome-settings-daemon
+exec --no-startup-id /usr/libexec/gnome-settings-daemon
 exec --no-startup-id nm-applet
 exec --no-startup-id gnome-power-manager
 exec --no-startup-id synapse
