@@ -64,7 +64,7 @@ if [ "$EUID" = "0" ] || [ "$USER" = "root" ] ; then
 PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:${ROOTPATH}"
 PROMPT="%{${fg_bold[red]}%}${PROMPT}"
 else
-PATH="/usr/local/bin:/usr/bin:/bin:${PATH}"
+PATH="/usr/local/bin:/usr/bin:/bin:${HOME}/.local/bin:${PATH}"
 PROMPT="%{${fg_bold[green]}%}%n@${PROMPT}"
 fi
 export PATH
