@@ -35,3 +35,7 @@
     status = auto
 [core]
 	eol = lf
+[merge]
+	tool = meld
+[mergetool "fugitive"]
+	cmd = vim -f -c \"Gdiff\" \"$MERGED\"
