@@ -3,5 +3,5 @@ Host shaolan
  Hostname shaolan.kdecherf.com
 
 Host fujitaka
- User kdecherf
- Hostname fujitaka.kdecherf.com
+ User root
+ Hostname fujitaka.local
