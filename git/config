@@ -12,7 +12,7 @@
     d = rm
     p = push
     pl = pull
-    st = status --short
+    st = status -sb
     ci = commit
     br = branch
     co = checkout
@@ -23,19 +23,29 @@
     who = shortlog -s --
     sh = stash
     shup = stash pop
+    fap = format-patch HEAD~
+    fapfap = format-patch
     ds = describe
     tk = log --name-status --pretty=oneline
     kick = update-index --assume-unchanged
     unkick = update-index --no-assume-unchanged
     s = svn
+    pe = format-patch -M -C --find-copies-harder --stdout
 
 [color]
     diff = auto
     branch = auto
     status = auto
+    ui = true
 [core]
 	eol = lf
 [merge]
 	tool = meld
 [mergetool "fugitive"]
 	cmd = vim -f -c \"Gdiff\" \"$MERGED\"
+
+[sendemail]
+   smtpencryption = tls
+   smtpserver = smtp.gmail.com
+   smtpuser = kevin@kdecherf.com
+   smtpserverport = 587
