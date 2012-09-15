@@ -14,8 +14,8 @@ autoload -Uz compinit colors
 compinit
 colors
 HISTFILE=~/.histfile
-HISTSIZE=32768
-SAVEHIST=32768
+HISTSIZE=262144
+SAVEHIST=262144
 setopt appendhistory autocd extendedglob nomatch notify PROMPT_SUBST
 unsetopt beep
 #bindkey -v
@@ -64,7 +64,7 @@ if [ "$EUID" = "0" ] || [ "$USER" = "root" ] ; then
 PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:${ROOTPATH}"
 PROMPT="%{${fg_bold[red]}%}${PROMPT}"
 else
-PATH="/usr/local/bin:/usr/bin:/bin:${HOME}/.local/bin:${PATH}"
+PATH="/usr/sbin:/usr/local/bin:/usr/bin:/bin:${HOME}/.local/bin:${PATH}"
 PROMPT="%{${fg_bold[green]}%}%n@${PROMPT}"
 fi
 export PATH
@@ -73,11 +73,11 @@ unset ROOTPATH
 alias ls='ls --color=auto'
 alias lo='ls -ogh'
 alias ll='ls -lh'
-# alias ssh='autossh -M 0'
+alias ssh='autossh -M 0'
 alias grep='grep --colour=auto'
 alias g='git'
 alias gd='gradle'
-alias shoot='scrot "Screenshot at %Y-%m-%d %H:%M:%S.png" -e "mv \"$f\" ~/Dropbox/Screenshots/"'
+alias shoot='scrot "Screenshot at %Y-%m-%d %H:%M:%S.png" -e "mv \"\$f\" ~/Dropbox/Screenshots/"'
 
 precmd(){
 vcs_info
@@ -95,5 +95,24 @@ unset sh shopts
 setopt nonomatch
 
 export LANG="en_US.UTF-8"
+export TERM="xterm-256color"
+
+export PATH="${PATH}:/usr/local/texlive/2011/bin/x86_64-linux"
+export MANPATH="${MANPATH}:/usr/local/texlive/2011/texmf/doc/man"
+export INFOPATH="${INFOPATH}:/usr/local/texlive/2011/texmf/doc/info"
 
 RPROMPT="[%* - %D{%d/%m/%Y}]"
+
+if [ -x /usr/bin/dircolors ]
+then
+  if [ -r ~/.dir_colors ]
+  then
+    eval "`dircolors ~/.dir_colors`"
+  elif [ -r /etc/dir_colors ]
+  then
+    eval "`dircolors /etc/dir_colors`"
+  else
+    eval "`dircolors`"
+  fi
+fi
+
