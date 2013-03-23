@@ -11,5 +11,10 @@ set autoread
 set cindent
 set smartindent
 set autoindent
+syntax on
+set hlsearch
 filetype plugin on
 autocmd BufNewFile,BufRead */source/_posts/*.markdown :set filetype=octopress
+
+highlight RedundantSpaces ctermbg=red guibg=red
+match RedundantSpaces /\s\+$\| \+\ze\t\|\t/
