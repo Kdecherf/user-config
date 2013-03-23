@@ -45,7 +45,4 @@
 	cmd = vim -f -c \"Gdiff\" \"$MERGED\"
 
 [sendemail]
-   smtpencryption = tls
-   smtpserver = smtp.gmail.com
-   smtpuser = kevin@kdecherf.com
-   smtpserverport = 587
+   smtpserver = /usr/bin/msmtp
