@@ -16,7 +16,8 @@
     p = push
     pl = pull
     st = status -sb
-    ci = commit
+    ci = commit -s
+    ca = commit -s --amend
     br = branch
     co = checkout
     cp = cherry-pick
