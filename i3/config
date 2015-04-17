@@ -159,13 +159,18 @@ bar {
 }
 
 new_window 1pixel
-workspace_layout default
+#workspace_layout default
 
-exec --no-startup-id /usr/libexec/gnome-settings-daemon
-exec --no-startup-id /usr/libexec/notification-daemon
-exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
-exec --no-startup-id nm-applet
+#assign [class="(?i)firefox"] → 1
+
+for_window [class="(?i)pinentry"] floating enable
+
+#exec --no-startup-id /usr/libexec/notification-daemon
 #exec --no-startup-id gnome-power-manager
-exec --no-startup-id redshift -l 47.22:-1.56
-exec --no-startup-id dropbox start
-exec --no-startup-id xautolock -time 5 -locker /home/kdecherf/.local/bin/lock-session -detectsleep
+
+#exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
+exec --no-startup-id /usr/libexec/gnome-settings-daemon
+#exec --no-startup-id nmcli con
+#exec --no-startup-id nm-applet
+#exec --no-startup-id redshift -l 47.22:-1.56
+#exec --no-startup-id xautolock -time 5 -locker /home/kdecherf/.local/bin/lock-session -detectsleep
