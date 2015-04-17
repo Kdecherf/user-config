@@ -34,21 +34,21 @@ hi link javascriptNumber        Number
 hi link javascriptNull          Constant
 
 hi Normal       guifg=#f8f8f8 guibg=#000000
-hi Normal       ctermfg=253   ctermbg=0
+hi Normal       ctermfg=253   ctermbg=232
 hi NonText      guifg=#666666 guibg=#000000
-hi NonText      ctermfg=241   ctermbg=0
+hi NonText      ctermfg=241   ctermbg=232
 hi StatusLine   guifg=#ffffff guibg=#121212 gui=bold
-hi StatusLine   ctermfg=15    ctermbg=233   cterm=bold
+hi StatusLine   ctermfg=15    ctermbg=232   cterm=bold
 hi StatusLineNC guifg=#ffffff guibg=#121212
-hi StatusLineNC ctermfg=15    ctermbg=233
+hi StatusLineNC ctermfg=15    ctermbg=235
 hi Cursor       guifg=#000000 guibg=#a7a7a7
 hi Cursor       ctermfg=0     ctermbg=248
 hi CursorLine   guifg=NONE    guibg=#121212
-hi CursorLine   ctermfg=none  ctermbg=233
+hi CursorLine   ctermfg=none  ctermbg=232
 hi CursorColumn guifg=NONE    guibg=#121212
-hi CursorColumn ctermfg=none  ctermbg=233
+hi CursorColumn ctermfg=none  ctermbg=235
 hi Pmenu        guifg=#ffffff guibg=#121212
-hi Pmenu        ctermfg=15    ctermbg=233
+hi Pmenu        ctermfg=15    ctermbg=235
 hi PmenuSel     guifg=#ffffff guibg=#242424
 hi PmenuSel     ctermfg=15    ctermbg=235
 hi Todo         guifg=#fd5ff1 guibg=#000000 gui=italic,underline
