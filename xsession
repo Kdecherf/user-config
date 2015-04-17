@@ -21,6 +21,7 @@ export LC_ADDRESS=en_US.utf8
 export LC_TELEPHONE=en_US.utf8
 export LC_MEASUREMENT=en_US.utf8
 export LC_IDENTIFICATION=en_US.utf8
+export PATH=/home/kdecherf/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
 
 # Use XToolkit in java applications
 export AWT_TOOLKIT=XToolkit
