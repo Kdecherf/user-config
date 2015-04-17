@@ -103,6 +103,13 @@ export INFOPATH="${INFOPATH}:/usr/local/texlive/2011/texmf/doc/info"
 
 RPROMPT="[%* - %D{%d/%m/%Y}]"
 
+if [ -f $HOME/.gpg-agent-info ]; then
+  . $HOME/.gpg-agent-info
+  export GPG_AGENT_INFO
+  GPG_TTY=$(tty)
+  export GPG_TTY
+fi
+
 if [ -x /usr/bin/dircolors ]
 then
   if [ -r ~/.dir_colors ]
