@@ -1,0 +1,86 @@
+# A basic .muttrc for use with Gmail
+
+set mbox_type=Maildir
+set folder = ~/.mail
+#source ~/.mutt/mailboxes
+mailboxes `find ~/.mail/ -maxdepth 3 -type d -name cur -printf '"%h"\n'|grep -ve 'All Mail"$'|grep -ve 'Trash"$'|grep -ve 'Sent Mail"$' | sort -V | tr "\n" " "`
+
+# Change the following line to a different editor you prefer.
+set editor = "vim"
+
+# Basic config, you can leave this as is
+#set imap_check_subscribed
+#set header_cache=~/.mutt/kdecherf_gmail.com/cache/headers
+#set message_cachedir=~/.mutt/kdecherf_gmail.com/cache/bodies
+#set certificate_file=~/.mutt/certificates
+set move = no
+set timeout = 3          # idle time before scanning
+set mail_check = 0       # minimum time between scans
+set delete               # don't ask, just do
+unset confirmappend      # don't ask, just do!
+set quit                 # don't ask, just do!!
+set include
+set sort = 'threads'
+set sort_aux = 'reverse-last-date-received'
+set auto_tag = yes
+unset mark_old
+
+set send_charset="us-ascii:utf-8"
+
+ignore "Authentication-Results:"
+ignore "DomainKey-Signature:"
+ignore "DKIM-Signature:"
+hdr_order Date From To Cc
+alternative_order text/plain text/html *
+auto_view text/html
+bind editor <Tab> complete-query
+bind editor ^T complete
+bind editor <space> noop
+bind index,pager G group-reply
+
+#set spoolfile = "+.kdecherf/INBOX"
+#set from="kevin@kdecherf.com"
+#set realname="Kevin Decherf"
+#set record="+kevin_kdecherf.com/[Gmail].Sent Mail"
+unset record
+#set postponed="+.kdecherf/[Gmail].Drafts"
+#set sendmail="/usr/bin/msmtp -a kdecherf"
+
+# source ~/.mutt/.colors-solarized-lightrc
+source ~/.mutt/.ivy-league.theme
+
+set index_format = "%4C %Z %[%b %d %R] %-25.25L (%?l?%4l&%4c?) %s"
+
+source ~/.mutt/.gpgrc
+
+macro index M "T.*\n;WN" "Mark all messages as read"
+
+macro index 1 "<change-folder>=.gmail/INBOX<enter>" "Go to Gmail inbox"
+macro index 2 "<change-folder>=.kdecherf/INBOX<enter>" "Go to Kdecherf inbox"
+macro index 3 "<change-folder>=.clevercloud/INBOX<enter>" "Go to Clever Cloud inbox"
+
+# Sidebar patch
+set sidebar_visible = yes
+set sidebar_sort = yes
+set sidebar_width = 35
+set sidebar_shortpath = yes
+set sidebar_folderindent = yes
+set sidebar_indentstr = " "
+color sidebar_new color166 default
+
+macro index b '<enter-command>toggle sidebar_visible<enter><refresh>'
+macro pager b '<enter-command>toggle sidebar_visible<enter><redraw-screen>'
+
+bind index B bounce-message
+
+bind index,pager \CP sidebar-prev
+bind index,pager \CN sidebar-next
+macro index,pager \CO '<sidebar-open><limit>~N<enter>'
+# End of sidebar patch
+
+source ~/.mutt/kevin_kdecherf.com/.muttrc
+
+# Per-account directives
+folder-hook +\.gmail.* 'source ~/.mutt/kdecherf_gmail.com/.muttrc'
+folder-hook +\.kdecherf.* 'source ~/.mutt/kevin_kdecherf.com/.muttrc'
+folder-hook +\.clevercloud.* 'source ~/.mutt/kevin.decherf_clever-cloud.com/.muttrc'
