@@ -6,6 +6,9 @@
         insteadOf = github:
 [url "git+ssh://git@github.com/"]
         pushInsteadOf = github: 
+[url "git+ssh://git@gitlab.clever-cloud.com/"]
+        insteadOf = clevercloud:
+        pushInsteadOf = clevercloud:
 
 [alias]
     a = add
