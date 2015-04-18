@@ -6,11 +6,6 @@ mailboxes `find ~/.mail/ -maxdepth 3 -type d -name cur -printf '"%h"\n'|grep -ve
 
 set editor = "vim"
 
-# Basic config, you can leave this as is
-#set imap_check_subscribed
-#set header_cache=~/.mutt/kdecherf_gmail.com/cache/headers
-#set message_cachedir=~/.mutt/kdecherf_gmail.com/cache/bodies
-#set certificate_file=~/.mutt/certificates
 set move = no
 set timeout = 3          # idle time before scanning
 set mail_check = 0       # minimum time between scans
@@ -36,13 +31,7 @@ bind editor ^T complete
 bind editor <space> noop
 bind index,pager G group-reply
 
-#set spoolfile = "+.kdecherf/INBOX"
-#set from="kevin@kdecherf.com"
-#set realname="Kevin Decherf"
-#set record="+kevin_kdecherf.com/[Gmail].Sent Mail"
 unset record
-#set postponed="+.kdecherf/[Gmail].Drafts"
-#set sendmail="/usr/bin/msmtp -a kdecherf"
 
 set index_format = "%4C %Z %[%b %d %R] %-25.25L (%?l?%4l&%4c?) %s"
 
