@@ -2,10 +2,8 @@
 
 set mbox_type=Maildir
 set folder = ~/.mail
-#source ~/.mutt/mailboxes
 mailboxes `find ~/.mail/ -maxdepth 3 -type d -name cur -printf '"%h"\n'|grep -ve 'All Mail"$'|grep -ve 'Trash"$'|grep -ve 'Sent Mail"$' | sort -V | tr "\n" " "`
 
-# Change the following line to a different editor you prefer.
 set editor = "vim"
 
 # Basic config, you can leave this as is
@@ -46,41 +44,26 @@ unset record
 #set postponed="+.kdecherf/[Gmail].Drafts"
 #set sendmail="/usr/bin/msmtp -a kdecherf"
 
-# source ~/.mutt/.colors-solarized-lightrc
-source ~/.mutt/.ivy-league.theme
-
 set index_format = "%4C %Z %[%b %d %R] %-25.25L (%?l?%4l&%4c?) %s"
-
-source ~/.mutt/.gpgrc
 
 macro index M "T.*\n;WN" "Mark all messages as read"
 
-macro index 1 "<change-folder>=.gmail/INBOX<enter>" "Go to Gmail inbox"
-macro index 2 "<change-folder>=.kdecherf/INBOX<enter>" "Go to Kdecherf inbox"
-macro index 3 "<change-folder>=.clevercloud/INBOX<enter>" "Go to Clever Cloud inbox"
+# Quick account switch
+macro index 1 "<change-folder>=gmail/INBOX<enter>" "Go to Gmail inbox"
+macro index 2 "<change-folder>=kdecherf/INBOX<enter>" "Go to Kdecherf inbox"
+macro index 3 "<change-folder>=clevercloud/INBOX<enter>" "Go to Clever Cloud inbox"
 
-# Sidebar patch
-set sidebar_visible = yes
-set sidebar_sort = yes
-set sidebar_width = 35
-set sidebar_shortpath = yes
-set sidebar_folderindent = yes
-set sidebar_indentstr = " "
-color sidebar_new color166 default
+# Per-account source
+folder-hook +gmail.* 'source ~/.mutt/gmail.muttrc'
+folder-hook +kdecherf.* 'source ~/.mutt/kdecherf.muttrc'
+folder-hook +clevercloud.* 'source ~/.mutt/clevercloud.muttrc'
 
-macro index b '<enter-command>toggle sidebar_visible<enter><refresh>'
-macro pager b '<enter-command>toggle sidebar_visible<enter><redraw-screen>'
+# Source theme
+source ~/.mutt/ivy-league.theme
 
-bind index B bounce-message
+# Source stuff
+source ~/.mutt/gpgrc
+source ~/.mutt/sidebar
 
-bind index,pager \CP sidebar-prev
-bind index,pager \CN sidebar-next
-macro index,pager \CO '<sidebar-open><limit>~N<enter>'
-# End of sidebar patch
-
-source ~/.mutt/kevin_kdecherf.com/.muttrc
-
-# Per-account directives
-folder-hook +\.gmail.* 'source ~/.mutt/kdecherf_gmail.com/.muttrc'
-folder-hook +\.kdecherf.* 'source ~/.mutt/kevin_kdecherf.com/.muttrc'
-folder-hook +\.clevercloud.* 'source ~/.mutt/kevin.decherf_clever-cloud.com/.muttrc'
+# Source default account
+source ~/.mutt/kdecherf.muttrc
