@@ -29,12 +29,16 @@ auto_view text/html
 bind editor <Tab> complete-query
 bind editor ^T complete
 bind editor <space> noop
+
+# Reply to all
 bind index,pager G group-reply
 
+# Don't record outgoing email: already done by Gmail
 unset record
 
 set index_format = "%4C %Z %[%b %d %R] %-25.25L (%?l?%4l&%4c?) %s"
 
+# Cheat code
 macro index M "T.*\n;WN" "Mark all messages as read"
 
 # Quick account switch
