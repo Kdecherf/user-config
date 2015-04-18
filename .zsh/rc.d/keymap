@@ -1,0 +1,3 @@
+bindkey '^R' history-incremental-search-backward
+bindkey '^[[4~' end-of-line
+bindkey '^[[1~' beginning-of-line

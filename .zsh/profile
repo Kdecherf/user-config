@@ -1,0 +1,16 @@
+[[ $0 == -su ]] && unset \
+	DESKTOP_SESSION
+
+export TIME_FORMAT="%D{%T}"
+export DATE_FORMAT="%D{%F}"
+
+export ZSH_HOME=${HOME}/.zsh
+export NSS_DEFAULT_DB_TYPE=sql
+export HIST_IGNORE_SPACE=y
+
+[[ -r /etc/profile.env ]] && \
+	source /etc/profile.env
+
+source ${ZSH_HOME}/utils/source-dir profile
+
+cd ~

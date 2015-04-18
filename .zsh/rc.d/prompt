@@ -1,0 +1,13 @@
+setopt PROMPT_SUBST
+autoload -Uz colors
+colors
+
+PROMPT='%M %{${fg[blue]}%}%4(c:…:)%3c ${vcs_info_msg_0_}%# %{${reset_color}%}'
+PROMPT="%{${fg_bold[green]}%}%n@${PROMPT}"
+
+RPROMPT="[%* - %D{%d/%m/%Y}]"
+
+precmd(){
+vcs_info
+[[ $(tty) = /dev/pts/* ]] && print -Pn "\e]0;%n@%M:%~\a"
+}

@@ -1,0 +1,9 @@
+export VISUAL=vim
+export EDITOR=$VISUAL
+
+export PAGER=less
+export MANPAGER=less
+
+if [[ -n "$DISPLAY" ]]; then
+    export TERMINAL=germinal
+fi

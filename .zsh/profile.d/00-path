@@ -1,0 +1,37 @@
+typeset -U paths
+
+
+paths=(
+      $HOME/.local/bin
+   )
+
+paths+=(
+      /opt/bin
+      /opt/sbin
+      /usr/local/bin
+      /usr/local/sbin
+      /usr/local/texlive/2011/bin/x86_64-linux
+   )
+
+if [[ -d "/usr/games/bin" ]]; then
+   paths+="/usr/games/bin"
+elif [[ -d "/usr/games" ]]; then
+   paths+="/usr/games"
+fi
+
+paths+=(
+      /usr/bin
+      /usr/sbin
+      /bin
+      /sbin
+      $path
+   )
+
+
+path=()
+for p in $paths; [[ -d $p ]] && path+=$p
+unset p
+unset paths
+
+
+export PATH

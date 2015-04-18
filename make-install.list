@@ -8,3 +8,9 @@ f .tmux.conf
 d .vim
 f .vimrc
 f .xinitrc
+l .zlogin
+l .zlogout
+l .zprofile
+d .zsh
+l .zshenv
+l .zshrc
