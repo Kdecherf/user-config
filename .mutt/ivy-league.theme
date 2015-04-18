@@ -1,7 +1,7 @@
 # XTerm colors: http://linux.jonas.me/xterm-colors
 
 # general-doesn't-fit stuff
-color normal color193 default
+color normal color185 default
 color error color193 color124
 color markers color142 default
 color tilde color142 default
@@ -13,23 +13,25 @@ color indicator color233 color193
 color index color193 default ~A
 color index color138 default ~N
 color index color138 default ~O
-color index color124 default ~F
+color index color160 default ~F
 
 # header stuff
 color hdrdefault color173 default
 color header color220 default "^Subject"
 
 # gpg stuff
-color body color143 default "^gpg: .*"
+color body color246 default "^gpg: .*"
 color body color34 default "^gpg: Good signature.*"
 color body color193 color124 "^gpg: BAD signature.*"
 color body color220 default "^gpg: Can't check signature.*"
-color body color143 default "^-----BEGIN PGP SIGNED MESSAGE-----"
-color body color143 default "^-----BEGIN PGP SIGNATURE-----"
-color body color143 default "^-----END PGP SIGNED MESSAGE-----"
-color body color143 default "^-----END PGP SIGNATURE-----"
-color body color143 default "^Version: GnuPG.*"
-color body color143 default "^Comment: .*"
+color body color220 default "^gpg: WARNING.*"
+color body color220 default "^Primary key fingerprint: [0-9A-F ]*"
+color body color246 default "^-----BEGIN PGP SIGNED MESSAGE-----"
+color body color246 default "^-----BEGIN PGP SIGNATURE-----"
+color body color246 default "^-----END PGP SIGNED MESSAGE-----"
+color body color246 default "^-----END PGP SIGNATURE-----"
+color body color246 default "^Version: GnuPG.*"
+color body color246 default "^Comment: .*"
 #color body color138 default "^[[:alnum:]/\+=]+[[:space:]]+$"
 
 
@@ -38,20 +40,20 @@ color body color111 default "(finger|ftp|http|https|news|telnet)://[^ >]*"
 color body color111 default "<URL:[^ ]*>"
 color body color111 default "www\\.[-.a-z0-9]+\\.[a-z][a-z][a-z]?([-_./~a-z0-9]+)?"
 color body color111 default "mailto: *[^ ]+\(\\i?subject=[^ ]+\)?"
-color body color111 default "[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+"
+color body color105 default "[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+"
 
 # misc body stuff
 color attachment color111 default
 color signature color245 default
 
 # quote levels
-color quoted color173 default
-color quoted1 color217 default
-color quoted2 color173 default
-color quoted3 color217 default
-color quoted4 color173 default
-color quoted5 color217 default
-color quoted6 color173 default
-color quoted7 color217 default
-color quoted8 color173 default
-color quoted9 color217 default
+color quoted color217 default
+color quoted1 color173 default
+color quoted2 color217 default
+color quoted3 color173 default
+color quoted4 color217 default
+color quoted5 color173 default
+color quoted6 color217 default
+color quoted7 color173 default
+color quoted8 color217 default
+color quoted9 color173 default
