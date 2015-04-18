@@ -16,17 +16,15 @@ color index color138 default ~O
 color index color160 default ~F
 
 # header stuff
-color hdrdefault  color30     default 
-color header      color132       default    '^date:'
+color hdrdefault  color173     default 
 color header      color153       default    '^(to|cc|bcc):'
 color header      color120       default    '^from:'
 color header      color178       default    '^subject:'
 color header      color31        default    '^user-agent:'
-color header      color29        default    '^reply-to:'
 
 # gpg stuff
 color body color246 default "^gpg: .*"
-color body color41 default "^gpg: Good signature.*"
+color body color40 default "^gpg: Good signature.*"
 color body color193 color124 "^gpg: BAD signature.*"
 color body color220 default "^gpg: Can't check signature.*"
 color body color220 default "^gpg: WARNING.*"
