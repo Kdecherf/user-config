@@ -1,7 +1,7 @@
 f .config/j4status/config
 d .config/systemd/user
 f .gitconfig
-f .i3/config
+d .i3
 f .msmtprc
 f .muttrc
 f .offlineimap.py
