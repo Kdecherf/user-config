@@ -33,5 +33,5 @@ xsetroot -solid "#333333"
 ulimit -c unlimited
 
 # Start i3 and log to ~/.i3/logfile
-echo "Starting at $(date)" >> ~/.i3/logfile
+echo "Starting at $(date)" >> ~/.i3.log
 exec /usr/bin/i3
