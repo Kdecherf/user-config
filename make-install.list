@@ -1,0 +1,10 @@
+f .config/j4status/config
+d .config/systemd/user
+f .gitconfig
+f .i3/config
+f .muttrc
+f .ssh/config
+f .tmux.conf
+d .vim
+f .vimrc
+f .xinitrc

@@ -1,0 +1,13 @@
+#!/bin/sh
+
+while read t n ; do
+   localPath="$(dirname $n)"
+   targetPath="$HOME/$localPath"
+   name="$(basename $n)"
+   if [[ "$localPath" != "." ]]; then
+      mkdir -p "$targetPath"
+   else
+      targetPath="$HOME"
+   fi
+   ln -sf "$(pwd)/$n" "$targetPath/$name"
+done < make-install.list
