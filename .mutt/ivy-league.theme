@@ -11,9 +11,11 @@ color status color142 default
 color tree color193 default
 color indicator color233 color193
 color index color229 default ~A
-color index color138 default ~N
+color index color76 default ~N
 color index color138 default ~O
-color index color160 default ~F
+color index color202 default ~F
+color index color242 default ~D
+
 
 # header stuff
 color hdrdefault  color173     default 
