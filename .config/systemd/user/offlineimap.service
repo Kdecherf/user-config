@@ -1,0 +1,10 @@
+[Unit]
+Description=OfflineIMAP Service
+After=network.target
+Requires=gpg-agent.service
+Conflicts=offlineimap@.service
+
+[Service]
+Type=simple
+EnvironmentFile=/home/kdecherf/.gpg-agent-info
+ExecStart=/usr/bin/offlineimap
