@@ -12,9 +12,6 @@ while read t n ; do
    if [[ "$t" == "l" ]]; then
       cp -a "$(pwd)/$n" "$targetPath/"
    else
-      if [[ "$t" == "d" ]]; then
-         rm "$targetPath/$name"
-      fi
-      ln -sf "$(pwd)/$n" "$targetPath/$name"
+      ln -sfnT "$(pwd)/$n" "$targetPath/$name"
    fi
 done < make-install.list
