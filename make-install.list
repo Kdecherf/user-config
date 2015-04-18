@@ -2,6 +2,7 @@ f .config/j4status/config
 d .config/systemd/user
 f .gitconfig
 f .i3/config
+f .msmtprc
 f .muttrc
 f .ssh/config
 f .tmux.conf
