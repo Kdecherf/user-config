@@ -11,4 +11,5 @@ set pgp_list_secring_command="gpg --no-verbose --batch --with-colons --list-secr
 set pgp_good_sign="^gpg: Good signature from"
 set crypt_replysignencrypted=yes
 set crypt_verify_sig=yes
+set pgp_auto_decode
 # set crypt_autosign=yes
