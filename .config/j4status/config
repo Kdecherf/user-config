@@ -1,0 +1,6 @@
+[Plugins]
+Output=i3bar
+Input=sensors;time
+
+[Sensors]
+Sensors=nouveau-pci-0100;coretemp-isa-0000;
