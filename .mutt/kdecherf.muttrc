@@ -1,0 +1,28 @@
+# Identity
+set from="kevin@kdecherf.com"
+set realname="Kevin Decherf"
+set signature="~/.mutt/kdecherf.signature"
+
+# Account-specific folders
+set postponed="+kdecherf/[Gmail].Drafts"
+set spoolfile="+kdecherf/INBOX"
+
+# Account-specific cache folders
+set header_cache="~/.cache/mutt/kdecherf/headers"
+set message_cachedir="~/.cache/mutt/kdecherf/bodies"
+
+# Account-specific macros
+macro index,pager d "<save-message>=kdecherf/[Gmail].Trash<enter>" "Trash the message"
+macro index,pager gi "<change-folder>=kdecherf/INBOX<enter>" "Go to INBOX"
+macro index,pager ga "<change-folder>=kdecherf/[Gmail].All\ Mail<enter>" "Go to All Mail"
+macro index,pager gd "<change-folder>=kdecherf/[Gmail].Drafts<enter>" "Go to Drafts"
+macro index,pager gs "<change-folder>=kdecherf/[Gmail].Sent\ Mail<enter>" "Go to Sent Mail"
+macro index,pager gS "<change-folder>=kdecherf/[Gmail].Starred<enter>" "Go to Starred"
+
+# GPG
+set pgp_encrypt_only_command="gpg --batch --quiet --no-verbose --output - --encrypt --textmode --armor --always-trust --encrypt-to 0xA81E6E2F -- -r %r -- %f"
+set pgp_encrypt_sign_command="gpg --passphrase-fd 0 --batch --quiet --no-verbose --textmode --output - --encrypt --sign %?a?-u %a? --armor --always-trust --encrypt-to 0xA81E6E2F -- -r %r -- %f"
+set pgp_sign_as="0xA81E6E2F"
+# my_hdr="X-PGP-Key: https://kdecherf.com/kdecherf.asc"
+
+set sendmail="/usr/bin/msmtp -a kdecherf"
