@@ -9,5 +9,9 @@ while read t n ; do
    else
       targetPath="$HOME"
    fi
-   ln -sf "$(pwd)/$n" "$targetPath/$name"
+   if [[ "$t" == "l" ]]; then
+      cp -a "$(pwd)/$n" "$targetPath/"
+   else
+      ln -sf "$(pwd)/$n" "$targetPath/$name"
+   fi
 done < make-install.list
