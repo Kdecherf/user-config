@@ -38,6 +38,11 @@ unset record
 
 set index_format = "%4C %Z %[%b %d %R] %-25.25L (%?l?%4l&%4c?) %s"
 
+# Composing
+set forward_format = "Fwd: %s"
+set forward_quote
+unset mime_forward
+
 # Cheat code
 macro index M "T.*\n;WN" "Mark all messages as read"
 
