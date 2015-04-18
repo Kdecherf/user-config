@@ -3,6 +3,7 @@ d .config/systemd/user
 f .gitconfig
 d .i3
 f .msmtprc
+d .mutt
 f .muttrc
 f .offlineimap.py
 f .offlineimaprc
