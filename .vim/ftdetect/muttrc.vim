@@ -1,1 +1,1 @@
-au BufNewFile,BufRead */.mutt/*  setf muttrc
+au BufNewFile,BufRead */.mutt/*  set filetype=muttrc
