@@ -43,6 +43,13 @@ set forward_format = "Fwd: %s"
 set forward_quote
 unset mime_forward
 
+set pager_stop
+
+set quote_regexp="^([ \t]*[>|])+"
+
+bind index <space>  collapse-thread
+bind compose p postpone-message
+
 # Cheat code
 macro index M "T.*\n;WN" "Mark all messages as read"
 
