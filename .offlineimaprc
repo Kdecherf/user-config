@@ -1,0 +1,80 @@
+[general]
+metadata = ~/.offlineimap
+accounts = GMail,Kdecherf,CleverCloud
+maxsyncaccounts = 1
+ignore-readonly = no
+pythonfile = ~/.offlineimap.py
+
+[mbnames]
+enabled = yes
+filename = ~/.mutt/mailboxes
+header = "mailboxes "
+peritem = "+%(accountname)s/%(foldername)s"
+sep = " "
+footer = "\n"
+
+[Account GMail]
+localrepository = Local-Gmail
+remoterepository = Remote-Gmail
+status_backend = sqlite
+
+[Account Kdecherf]
+localrepository = Local-Kdecherf
+remoterepository = Remote-Kdecherf
+status_backend = sqlite
+
+[Account CleverCloud]
+localrepository = Local-CleverCloud
+remoterepository = Remote-CleverCloud
+status_backend = sqlite
+
+[Repository Local-Gmail]
+type = Maildir
+localfolders = ~/.mail/gmail
+nametrans = lambda folder: re.sub('^\[Label\]\.', '', folder)
+restoreatime = no
+
+[Repository Remote-Gmail]
+type = Gmail
+remoteuser = kdecherf@gmail.com
+remotepasseval = get_password("google.com/kdecherf@gmail.com[imap]")
+ssl = yes
+maxconnections = 1
+realdelete = no
+#folderfilter = lambda foldername: foldername in ['INBOX','[Gmail]/Starred','[Gmail]/Drafts','[Gmail]/All Mail','[Gmail]/Sent Mail','[Gmail]/Trash']
+nametrans = lambda folder: re.sub('^([^[]+)$', labelize_folder, folder)
+sslcacertfile=/etc/ssl/certs/Equifax_Secure_CA.pem
+
+[Repository Local-Kdecherf]
+type = Maildir
+localfolders = ~/.mail/kdecherf
+nametrans = lambda folder: re.sub('^\[Label\]\.', '', folder)
+restoreatime = no
+
+[Repository Remote-Kdecherf]
+type = Gmail
+remoteuser = kevin@kdecherf.com
+remotepasseval = get_password("google.com/kevin@kdecherf.com[imap]")
+ssl = yes
+maxconnections = 1
+realdelete = no
+#folderfilter = lambda foldername: foldername in ['INBOX','[Gmail]/Starred','[Gmail]/Drafts','[Gmail]/All Mail','[Gmail]/Sent Mail','[Gmail]/Trash']
+nametrans = lambda folder: re.sub('^([^[]+)$', labelize_folder, folder)
+sslcacertfile=/etc/ssl/certs/Equifax_Secure_CA.pem
+
+[Repository Local-CleverCloud]
+type = Maildir
+localfolders = ~/.mail/clevercloud
+nametrans = lambda folder: re.sub('^\[Label\]\.', '', folder)
+restoreatime = no
+
+[Repository Remote-CleverCloud]
+type = Gmail
+remoteuser = kevin.decherf@clever-cloud.com
+remotepasseval = get_password("google.com/kevin.decherf@clever-cloud.com[imap]")
+ssl = yes
+maxconnections = 1
+realdelete = no
+#folderfilter = lambda foldername: foldername in ['INBOX','[Gmail]/Starred','[Gmail]/Drafts','[Gmail]/All Mail','[Gmail]/Sent Mail','[Gmail]/Trash']
+nametrans = lambda folder: re.sub('^([^[]+)$', labelize_folder, folder)
+sslcacertfile=/etc/ssl/certs/Equifax_Secure_CA.pem

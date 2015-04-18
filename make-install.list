@@ -4,6 +4,8 @@ f .gitconfig
 f .i3/config
 f .msmtprc
 f .muttrc
+f .offlineimap.py
+f .offlineimaprc
 f .ssh/config
 f .tmux.conf
 d .vim
