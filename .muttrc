@@ -68,6 +68,7 @@ macro index C "<copy-message>?<toggle-mailboxes>" "Copy a message to a mailbox"
 macro index M "<save-message>?<toggle-mailboxes>" "Move a message to a mailbox"
 macro index gl "<change-folder>?" "Move to label"
 
+macro index D "<tag-prefix>d" "Move tagged messages to trash"
 
 # TODO: Sync email
 # macro index O "<shell-escape>offlineimap<enter>"           "run offlineimap to sync all mail"
