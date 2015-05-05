@@ -1,7 +1,7 @@
 [general]
 metadata = ~/.offlineimap
 accounts = GMail,Kdecherf,CleverCloud
-maxsyncaccounts = 1
+maxsyncaccounts = 2
 ignore-readonly = no
 pythonfile = ~/.offlineimap.py
 
