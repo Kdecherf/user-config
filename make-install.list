@@ -2,6 +2,7 @@ f .config/j4status/config
 d .config/systemd/user
 f .gitconfig
 d .i3
+f .mailcap
 f .msmtprc
 d .mutt
 f .muttrc
