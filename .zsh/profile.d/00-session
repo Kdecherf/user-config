@@ -14,4 +14,4 @@ if [[ -z "${XDG_RUNTIME_DIR+systemd}" ]]; then
 	[[ ! -d ${XDG_RUNTIME_DIR} ]] && mkdir -p ${XDG_RUNTIME_DIR}
 fi
 
-export DBUS_SESSION_BUS_ADDRESS=unix:path=${XDG_RUNTIME_DIR}/dbus/user_bus_socket
+export DBUS_SESSION_BUS_ADDRESS=unix:path=${XDG_RUNTIME_DIR}/bus
