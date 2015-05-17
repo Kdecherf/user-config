@@ -14,11 +14,6 @@ alias syser='systemctl --user'
 
 alias mutt='TERM="xterm-256color" mutt'
 
-# Ugly Shortcuts
-alias berk='bundle exec rake'
-
-alias yukito='wol 00:17:31:91:12:00'
-
 ssh() {
    gpg-connect-agent updatestartuptty /bye 2>&1 > /dev/null
    ssh-add -l | grep "/home/kdecherf/.ssh/id_rsa" 2>&1 > /dev/null
