@@ -3,6 +3,7 @@ typeset -U paths
 
 paths=(
       $HOME/.local/bin
+      $HOME/.gem/ruby/2.2/bin
    )
 
 if [[ -d "/usr/games/bin" ]]; then
