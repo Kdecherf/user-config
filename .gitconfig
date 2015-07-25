@@ -50,3 +50,5 @@
 
 [sendemail]
    smtpserver = /usr/bin/msmtp
+[push]
+	default = simple
