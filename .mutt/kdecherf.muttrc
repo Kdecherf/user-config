@@ -3,6 +3,8 @@ set from="kevin@kdecherf.com"
 set realname="Kevin Decherf"
 set signature="~/.mutt/kdecherf.signature"
 
+alternates "me@kdecherf.com|kdecherf@gmail.com"
+
 # Account-specific folders
 set postponed="+kdecherf/[Gmail].Drafts"
 set spoolfile="+kdecherf/INBOX"
