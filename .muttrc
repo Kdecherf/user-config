@@ -88,6 +88,7 @@ folder-hook +clevercloud.* 'source ~/.mutt/clevercloud.muttrc'
 source ~/.mutt/ivy-league.theme
 
 # Source stuff
+source ~/.mutt/smimerc
 source ~/.mutt/gpgrc
 source ~/.mutt/sidebar
 
