@@ -18,6 +18,7 @@
     st = status -sb
     ci = commit -s
     ca = commit -s --amend
+    cam = commit -s --amend -C HEAD
     br = branch
     co = checkout
     cp = cherry-pick
