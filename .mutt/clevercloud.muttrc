@@ -3,6 +3,8 @@ set from="kevin.decherf@clever-cloud.com"
 set realname="Kevin Decherf"
 set signature="~/.mutt/clevercloud.signature"
 
+alternates ""
+
 # Account-specific folders
 set postponed="+clevercloud/[Gmail].Drafts"
 set spoolfile="+clevercloud/INBOX"
