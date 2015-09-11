@@ -77,12 +77,10 @@ macro index \Ca "<next-unread-mailbox><limit>~N<enter>" "Go to the next mailbox 
 # macro index o "<shell-escape>offlineimap -qf INBOX<enter>" "run offlineimap to sync inbox"
 
 # Quick account switch
-macro index 1 "<change-folder>=gmail/INBOX<enter>" "Go to Gmail inbox"
-macro index 2 "<change-folder>=kdecherf/INBOX<enter>" "Go to Kdecherf inbox"
-macro index 3 "<change-folder>=clevercloud/INBOX<enter>" "Go to Clever Cloud inbox"
+macro index 6 "<change-folder>=kdecherf/INBOX<enter>" "Go to Kdecherf inbox"
+macro index 9 "<change-folder>=clevercloud/INBOX<enter>" "Go to Clever Cloud inbox"
 
 # Per-account source
-folder-hook +gmail.* 'source ~/.mutt/gmail.muttrc'
 folder-hook +kdecherf.* 'source ~/.mutt/kdecherf.muttrc'
 folder-hook +clevercloud.* 'source ~/.mutt/clevercloud.muttrc'
 
