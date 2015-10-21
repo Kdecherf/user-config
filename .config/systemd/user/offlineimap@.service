@@ -1,9 +1,7 @@
 [Unit]
 Description=OfflineIMAP Service for %i
 After=network.target
-Requires=gpg-agent.service
 
 [Service]
 Type=simple
-EnvironmentFile=/home/kdecherf/.gpg-agent-info
 ExecStart=/usr/bin/offlineimap -q -f "[Gmail]/Sent Mail,[Gmail]/Starred,[Gmail]/Trash,INBOX" -a %i
