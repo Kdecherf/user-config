@@ -22,8 +22,8 @@ macro index,pager gs "<change-folder>=kdecherf/[Gmail].Sent\ Mail<enter>" "Go to
 macro index,pager gS "<change-folder>=kdecherf/[Gmail].Starred<enter>" "Go to Starred"
 
 # GPG
-set pgp_encrypt_only_command="gpg --batch --quiet --no-verbose --output - --encrypt --textmode --armor --always-trust --encrypt-to 0xA81E6E2F -- -r %r -- %f"
-set pgp_encrypt_sign_command="gpg --passphrase-fd 0 --batch --quiet --no-verbose --textmode --output - --encrypt --sign %?a?-u %a? --armor --always-trust --encrypt-to 0xA81E6E2F -- -r %r -- %f"
+set pgp_encrypt_only_command="gpg --batch --quiet --no-verbose --output - --encrypt --textmode --armor --always-trust --encrypt-to 0xA81E6E2F -r %r %f"
+set pgp_encrypt_sign_command="gpg --passphrase-fd 0 --batch --quiet --no-verbose --textmode --output - --encrypt --sign %?a?-u %a? --armor --always-trust --encrypt-to 0xA81E6E2F -r %r %f"
 set pgp_sign_as="0xA81E6E2F"
 # my_hdr="X-PGP-Key: https://kdecherf.com/kdecherf.asc"
 
