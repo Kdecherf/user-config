@@ -45,5 +45,7 @@ syntax on
 set hlsearch
 filetype plugin on
 
+vnoremap <C-X> <Esc>`.``gvP``P
+
 highlight RedundantSpaces ctermbg=red guibg=red
 match RedundantSpaces /\s\+$\| \+\ze\t\|\t/
