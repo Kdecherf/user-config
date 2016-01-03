@@ -34,4 +34,5 @@ ulimit -c unlimited
 
 # Start i3 and log to ~/.i3/logfile
 echo "Starting at $(date)" >> ~/.i3.log
+xbindkeys
 exec /usr/bin/i3
