@@ -1,0 +1,7 @@
+bind status C !git commit -s
+
+bind status I !git add -i %(file)
+bind status P !git add -p %(file)
+bind status + !git commit -s --amend
+
+bind main u ?git revert %(commit)

@@ -9,6 +9,7 @@ f .muttrc
 f .offlineimap.py
 f .offlineimaprc
 f .ssh/config
+f .tigrc
 f .tmux.conf
 d .vim
 f .vimrc
