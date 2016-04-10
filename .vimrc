@@ -9,7 +9,6 @@ call vundle#begin()
 
    Plugin 'robbles/logstash.vim'
    Plugin 'wincent/command-t'
-   Plugin 'vim-airline/vim-airline'          " Pretty statusbar
    Plugin 'vim-airline/vim-airline-themes'   " Pretty statusbar themes
    Plugin 'tpope/vim-fugitive'         " Git wrapper
    Plugin 'altercation/vim-colors-solarized.git'
