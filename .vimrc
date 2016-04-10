@@ -19,16 +19,26 @@ hi Normal	ctermbg=NONE
 hi NonText	ctermbg=NONE
 set nocp
 set mouse=a
-set tabstop=3
-set shiftwidth=3
-set expandtab
 set autoread
 set cindent
+syntax on
+set number
+set showmatch
+set noshowmode
+filetype plugin on
+
+" Tabs
 set smartindent
 set autoindent
-syntax on
+set expandtab
+set tabstop=3
+set shiftwidth=3
+
+" Searches
 set hlsearch
-filetype plugin on
+set ignorecase
+set smartcase
+
 
 vnoremap <C-X> <Esc>`.``gvP``P
 
