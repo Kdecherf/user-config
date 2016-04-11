@@ -12,10 +12,8 @@ alias shoot='scrot "Screenshot at %Y-%m-%d %H:%M:%S.png" -e "mv \"\$f\" ~/Dropbo
 alias tmux='tmux -2'
 alias syser='systemctl --user'
 
-alias mutt='TERM="xterm-256color" mutt'
-
 ssh() {
-   gpg-connect-agent updatestartuptty /bye 2>&1 > /dev/null
+   gpg-connect-agent /bye 2>&1 > /dev/null
    ssh-add -l | grep "/home/kdecherf/.ssh/id_rsa" 2>&1 > /dev/null
    if [[ $? -gt 0 ]]; then
       ssh-add

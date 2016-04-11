@@ -4,48 +4,62 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+   " let Vundle manage Vundle, required
+   Plugin 'gmarik/Vundle.vim'
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+   Plugin 'robbles/logstash.vim'
+   Plugin 'wincent/command-t'
+   Plugin 'vim-airline/vim-airline-themes'   " Pretty statusbar themes
+   Plugin 'tpope/vim-fugitive'         " Git wrapper
+   Plugin 'altercation/vim-colors-solarized.git'
+   Plugin 'edkolev/promptline.vim'
 
-Plugin 'robbles/logstash.vim'
-Plugin 'wincent/command-t'
-
-" All of your Plugins must be added before the following line
+   " All of your Plugins must be added before the following line
 call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
 
-colorscheme sunburst
-set t_Co=256
-hi Normal	ctermbg=NONE
-hi NonText	ctermbg=NONE
 set nocp
 set mouse=a
-set tabstop=3
-set shiftwidth=3
-set expandtab
 set autoread
 set cindent
+syntax on
+set number
+set showmatch
+set noshowmode
+filetype plugin on
+
+" Tabs
 set smartindent
 set autoindent
-syntax on
+set expandtab
+set tabstop=3
+set shiftwidth=3
+
+" Searches
 set hlsearch
-filetype plugin on
+set ignorecase
+set smartcase
+
+" Status bar -> Replace with vim-airplane plugin
+set laststatus=2              " show ever
+set showmode                  " show mode
+set showcmd                   " show cmd
+set ruler                     " show cursor line number
+set shm=atI                   " cut large messages
+
+" Colors
+set background=dark
+colorscheme solarized
+hi Normal	ctermbg=NONE
+hi NonText	ctermbg=NONE
 
 vnoremap <C-X> <Esc>`.``gvP``P
 
 highlight RedundantSpaces ctermbg=red guibg=red
 match RedundantSpaces /\s\+$\| \+\ze\t\|\t/
+
+"  vim-airline
+let g:airline_inactive_collapse = 0
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tagbar#enabled = 1
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'base16'
