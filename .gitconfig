@@ -45,7 +45,7 @@
 [core]
 	eol = lf
 [merge]
-	tool = meld
+	tool = vimdiff
 [mergetool "fugitive"]
 	cmd = vim -f -c \"Gdiff\" \"$MERGED\"
 
