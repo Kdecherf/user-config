@@ -7,12 +7,8 @@ call vundle#begin()
    " let Vundle manage Vundle, required
    Plugin 'gmarik/Vundle.vim'
 
-   Plugin 'robbles/logstash.vim'
-   Plugin 'wincent/command-t'
-   Plugin 'vim-airline/vim-airline-themes'   " Pretty statusbar themes
-   Plugin 'tpope/vim-fugitive'         " Git wrapper
-   Plugin 'altercation/vim-colors-solarized.git'
-   Plugin 'edkolev/promptline.vim'
+   Plugin 'vim-airline/vim-airline'
+   Plugin 'vim-airline/vim-airline-themes'
 
    " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -46,20 +42,21 @@ set showcmd                   " show cmd
 set ruler                     " show cursor line number
 set shm=atI                   " cut large messages
 
-" Colors
 set background=dark
-colorscheme solarized
-hi Normal	ctermbg=NONE
-hi NonText	ctermbg=NONE
+if &term =~ '256color'
+  " disable Background Color Erase (BCE)
+  set t_ut=
+endif
+colorscheme hybrid
 
 vnoremap <C-X> <Esc>`.``gvP``P
 
 highlight RedundantSpaces ctermbg=red guibg=red
 match RedundantSpaces /\s\+$\| \+\ze\t\|\t/
 
-"  vim-airline
+" Airline
+let g:airline_theme = 'powerlineish'
+let g:airline_powerline_fonts = 1
 let g:airline_inactive_collapse = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
-let g:airline_powerline_fonts = 1
-let g:airline_theme = 'base16'
