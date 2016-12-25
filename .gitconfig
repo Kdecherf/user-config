@@ -53,3 +53,5 @@
    smtpserver = /usr/bin/msmtp
 [push]
 	default = simple
+[diff "gpg"]
+	textconv = gpg --no-tty --decrypt
