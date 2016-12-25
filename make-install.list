@@ -1,7 +1,9 @@
-f .config/j4status/config
+d .config/rofi
+d .config/rofi-pass
 d .config/systemd/user
 f .gitconfig
 d .i3
+f .i3status.conf
 f .mailcap
 f .msmtprc
 d .mutt

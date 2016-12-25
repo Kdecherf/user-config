@@ -1,9 +1,0 @@
-[Plugins]
-Output=i3bar
-Input=nm;sensors;upower;time
-
-[NetworkManager]
-Interfaces=enp0s20u3;wlp59s0;
-
-[Sensors]
-Sensors=asus-isa-0000;

@@ -1,0 +1,3 @@
+default_do="copyPass"
+clip=clipboard
+BROWSER=xdg-open
