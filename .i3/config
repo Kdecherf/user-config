@@ -165,22 +165,35 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-   status_command j4status
+  status_command i3status
+  position top
+  font pango:Knack Nerd Font 9.5
+
+colors {
+    background #27272E
+    statusline #C7C9FF
+    separator #27272E
+    #  colorclass       border  backg.  text
+    focused_workspace   #2E2E37 #2E2E37 #C7C9FF
+    urgent_workspace    #79BB73 #79BB73 #27272E
+    inactive_workspace  #27272E #27272E #757694
+  }
 }
 
-new_window 1pixel
+new_window pixel 1
 #workspace_layout default
 
-#assign [class="(?i)firefox"] → 1
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle && killall -SIGUSR1 i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -5% && killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5% && killall -SIGUSR1 i3status
 
 for_window [class="(?i)pinentry"] floating enable
 
 #exec --no-startup-id /usr/libexec/notification-daemon
 #exec --no-startup-id gnome-power-manager
 
-#exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
+exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
 exec --no-startup-id /usr/libexec/gnome-settings-daemon
-#exec --no-startup-id nmcli con
-#exec --no-startup-id nm-applet
-#exec --no-startup-id redshift -l 47.22:-1.56
+exec --no-startup-id nm-applet
+exec --no-startup-id redshift -l 47.22:-1.56
 #exec --no-startup-id xautolock -time 5 -locker /home/kdecherf/.local/bin/lock-session -detectsleep
