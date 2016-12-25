@@ -1,3 +1,9 @@
 [submodule ".vim/bundle/Vundle.vim"]
 	path = .vim/bundle/Vundle.vim
 	url = https://github.com/gmarik/Vundle.vim.git
+[submodule "deps/rofi-pass"]
+	path = deps/rofi-pass
+	url = https://github.com/carnager/rofi-pass.git
+[submodule "deps/powerlevel9k"]
+	path = deps/powerlevel9k
+	url = https://github.com/bhilburn/powerlevel9k.git
