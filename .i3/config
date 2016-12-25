@@ -11,7 +11,7 @@
 
 set $mod Mod4
 
-font pango:"DejaVu Sans Mono for Powerline" 8
+font pango:Knack Nerd Font 8.5
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -80,29 +80,40 @@ bindsym $mod+q focus parent
 # focus the child container
 #bindcode $mod+d focus child
 
+set $workspace1 "1 "
+set $workspace2 "2 "
+set $workspace3 "3 "
+set $workspace4 "4 "
+set $workspace5 "5 "
+set $workspace6 "6 "
+set $workspace7 "7 "
+set $workspace8 "8 "
+set $workspace9 "9 "
+set $workspace10 "10 "
+
 # switch to workspace
-bindsym $mod+ampersand workspace 1
-bindsym $mod+eacute workspace 2
-bindsym $mod+quotedbl workspace 3
-bindsym $mod+apostrophe workspace 4
-bindsym $mod+parenleft workspace 5
-bindsym $mod+minus workspace 6
-bindsym $mod+egrave workspace 7
-bindsym $mod+underscore workspace 8
-bindsym $mod+ccedilla workspace 9
-bindsym $mod+agrave workspace 10
+bindsym $mod+ampersand workspace $workspace1
+bindsym $mod+eacute workspace $workspace2
+bindsym $mod+quotedbl workspace $workspace3
+bindsym $mod+apostrophe workspace $workspace4
+bindsym $mod+parenleft workspace $workspace5
+bindsym $mod+minus workspace $workspace6
+bindsym $mod+egrave workspace $workspace7
+bindsym $mod+underscore workspace $workspace8
+bindsym $mod+ccedilla workspace $workspace9
+bindsym $mod+agrave workspace $workspace10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move workspace 1
-bindsym $mod+Shift+2 move workspace 2
-bindsym $mod+Shift+3 move workspace 3
-bindsym $mod+Shift+4 move workspace 4
-bindsym $mod+Shift+5 move workspace 5
-bindsym $mod+Shift+6 move workspace 6
-bindsym $mod+Shift+7 move workspace 7
-bindsym $mod+Shift+8 move workspace 8
-bindsym $mod+Shift+9 move workspace 9
-bindsym $mod+Shift+0 move workspace 10
+bindsym $mod+Shift+1 move workspace $workspace1
+bindsym $mod+Shift+2 move workspace $workspace2
+bindsym $mod+Shift+3 move workspace $workspace3
+bindsym $mod+Shift+4 move workspace $workspace4
+bindsym $mod+Shift+5 move workspace $workspace5
+bindsym $mod+Shift+6 move workspace $workspace6
+bindsym $mod+Shift+7 move workspace $workspace7
+bindsym $mod+Shift+8 move workspace $workspace8
+bindsym $mod+Shift+9 move workspace $workspace9
+bindsym $mod+Shift+0 move workspace $workspace10
 
 # reload the configuration file
 bindsym $mod+Shift+C reload
