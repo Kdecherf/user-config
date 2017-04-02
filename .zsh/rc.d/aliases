@@ -4,11 +4,11 @@ alias lo='ls -ogh'
 alias ll='ls -lh'
 alias grep='grep --colour=auto'
 alias egrep='egrep --colour=auto'
+alias shaolan='ssh -t shaolan "tmux a"'
 
 # Shortcuts
 alias g='git'
 alias gd='gradle'
-alias shoot='scrot "Screenshot at %Y-%m-%d %H:%M:%S.png" -e "mv \"\$f\" ~/Dropbox/Screenshots/"'
 alias tmux='tmux -2'
 alias syser='systemctl --user'
 
@@ -18,12 +18,7 @@ ssh() {
    if [[ $? -gt 0 ]]; then
       ssh-add
    fi
-   if [[ "$1" == "r" ]]; then
-      shift
-      ssh $@
-   else
-      autossh -M 0 $@
-   fi
+   /bin/ssh $@
 }
 
 alias fssh='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
