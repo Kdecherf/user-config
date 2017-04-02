@@ -186,13 +186,15 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle && killa
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -5% && killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5% && killall -SIGUSR1 i3status
 
+bindsym Print exec --no-startup-id scrot '%Y-%m-%d-%H%M%S_$wx$h.png' -e 'mv $f ~/ownCloud/Screenshots/%Y/'
+
 for_window [class="(?i)pinentry"] floating enable
 
 #exec --no-startup-id /usr/libexec/notification-daemon
 #exec --no-startup-id gnome-power-manager
 
 exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
-exec --no-startup-id /usr/libexec/gnome-settings-daemon
+exec --no-startup-id /usr/libexec/gsd-xsettings
 exec --no-startup-id nm-applet
 exec --no-startup-id redshift -l 47.22:-1.56
 #exec --no-startup-id xautolock -time 5 -locker /home/kdecherf/.local/bin/lock-session -detectsleep
