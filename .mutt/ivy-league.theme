@@ -14,8 +14,6 @@ color index color229 default ~A
 color index color76 default ~N
 color index color138 default ~O
 color index color202 default ~F
-color index color242 default ~D
-
 
 # header stuff
 color hdrdefault  color173     default 
