@@ -36,7 +36,7 @@ bind index,pager R group-reply
 # Don't record outgoing email: already done by Gmail
 unset record
 
-set index_format = "%4C %Z %[%b %d %R] %-25.25L (%?l?%4l&%4c?) %s"
+set index_format = "%4C (%4c) %Z %?GI?%GI& ? %[%d/%b]  %-20.19F %?K?%15.14K&               ? %?M?(%3M)&     ? %?X?¤& ? %s %> %?g?%g?"
 
 # Composing
 set forward_format = "Fwd: %s"
