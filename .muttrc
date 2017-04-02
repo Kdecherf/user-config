@@ -91,3 +91,9 @@ source ~/.mutt/sidebar
 
 # Source default account
 source ~/.mutt/kdecherf.muttrc
+
+# Source subscriptions
+source ~/.mutt/subscriptions.muttrc
+
+# Source color overload
+source ~/.mutt/overload.theme
