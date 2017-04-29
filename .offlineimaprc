@@ -1,22 +1,27 @@
 [general]
 metadata = ~/.offlineimap
-accounts = Kdecherf,CleverCloud
+accounts = Kdecherf
 maxsyncaccounts = 2
 ignore-readonly = no
 pythonfile = ~/.offlineimap.py
 
 [mbnames]
 enabled = no
+header = "mailboxes "
+peritem = "+%(accountname)s/%(foldername)s"
+sep = " "
+footer = "\n"
+filename = ~/.mail/mailboxes
+
+[DEFAULT]
+auth_mechanisms = PLAIN, LOGIN
+sslcacertfile=/etc/ssl/certs/ca-certificates.crt
 
 [Account Kdecherf]
 localrepository = Local-Kdecherf
 remoterepository = Remote-Kdecherf
 status_backend = sqlite
-
-[Account CleverCloud]
-localrepository = Local-CleverCloud
-remoterepository = Remote-CleverCloud
-status_backend = sqlite
+postsynchook = notmuch new
 
 [Repository Local-Kdecherf]
 type = Maildir
@@ -33,21 +38,3 @@ maxconnections = 1
 realdelete = no
 #folderfilter = lambda foldername: foldername in ['INBOX','[Gmail]/Starred','[Gmail]/Drafts','[Gmail]/All Mail','[Gmail]/Sent Mail','[Gmail]/Trash']
 nametrans = lambda folder: re.sub('^([^[]+)$', labelize_folder, folder)
-sslcacertfile=/etc/ssl/certs/Equifax_Secure_CA.pem
-
-[Repository Local-CleverCloud]
-type = Maildir
-localfolders = ~/.mail/clevercloud
-nametrans = lambda folder: re.sub('^\[Label\]\.', '', folder)
-restoreatime = no
-
-[Repository Remote-CleverCloud]
-type = Gmail
-remoteuser = kevin.decherf@clever-cloud.com
-remotepasseval = get_password("google.com/kevin.decherf@clever-cloud.com[imap]")
-ssl = yes
-maxconnections = 1
-realdelete = no
-#folderfilter = lambda foldername: foldername in ['INBOX','[Gmail]/Starred','[Gmail]/Drafts','[Gmail]/All Mail','[Gmail]/Sent Mail','[Gmail]/Trash']
-nametrans = lambda folder: re.sub('^([^[]+)$', labelize_folder, folder)
-sslcacertfile=/etc/ssl/certs/Equifax_Secure_CA.pem
