@@ -1,3 +1,4 @@
+f .Xdefaults
 d .config/rofi
 d .config/rofi-pass
 d .config/systemd/user
