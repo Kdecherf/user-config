@@ -17,7 +17,7 @@ font pango:Knack Nerd Font 8.5
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec germinal
+bindsym $mod+Return exec urxvt
 
 bindsym $mod+o exec /home/kdecherf/.local/bin/lock-session
 
