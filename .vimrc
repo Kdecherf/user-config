@@ -51,6 +51,10 @@ colorscheme hybrid
 
 vnoremap <C-X> <Esc>`.``gvP``P
 
+map dol :diffget LOCAL<CR>
+map dob :diffget BASE<CR>
+map dor :diffget REMOTE<CR>
+
 highlight RedundantSpaces ctermbg=red guibg=red
 match RedundantSpaces /\s\+$\| \+\ze\t\|\t/
 
