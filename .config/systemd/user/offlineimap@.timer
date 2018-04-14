@@ -1,7 +1,0 @@
-[Unit]
-Description=OfflineIMAP Service for %i
-
-[Timer]
-OnUnitInactiveSec=60s
-AccuracySec=1
-Unit=offlineimap@%i.service

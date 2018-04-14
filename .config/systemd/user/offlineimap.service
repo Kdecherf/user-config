@@ -1,8 +1,0 @@
-[Unit]
-Description=OfflineIMAP Service
-After=network.target
-Conflicts=offlineimap@.service
-
-[Service]
-Type=simple
-ExecStart=/usr/bin/offlineimap

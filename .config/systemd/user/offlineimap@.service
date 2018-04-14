@@ -1,7 +1,0 @@
-[Unit]
-Description=OfflineIMAP Service for %i
-After=network.target
-
-[Service]
-Type=simple
-ExecStart=/usr/bin/offlineimap -q -f "[Gmail]/Sent Mail,[Gmail]/Starred,[Gmail]/Trash,INBOX" -a %i
