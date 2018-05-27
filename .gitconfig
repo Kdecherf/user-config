@@ -52,3 +52,5 @@
    default = simple
 [diff "gpg"]
    textconv = gpg --no-tty --decrypt --quiet
+[blame "gpg"]
+   textconv = gpg --no-tty --decrypt --quiet
