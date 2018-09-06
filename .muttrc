@@ -1,14 +1,15 @@
+# vim: syntax=neomuttrc
+#
 # A basic .muttrc for use with Gmail
 
 set mbox_type=Maildir
 set folder = ~/.mail
-mailboxes `find ~/.mail/ -maxdepth 3 -type d -name cur -printf '"%h"\n'|grep -ve 'All Mail"$'|grep -ve 'Trash"$'|grep -ve 'Sent Mail"$' | sort -V | tr "\n" " "`
 
 set editor = "vim"
 
 set move = no
 set timeout = 3          # idle time before scanning
-set mail_check = 0       # minimum time between scans
+set mail_check = 5       # minimum time between scans
 set delete               # don't ask, just do
 unset confirmappend      # don't ask, just do!
 set quit                 # don't ask, just do!!
@@ -18,14 +19,17 @@ set sort_aux = 'reverse-last-date-received'
 set auto_tag = yes
 unset mark_old
 
+set mailcap_path = ~/.mutt/mailcap
+
 set send_charset="us-ascii:utf-8"
 
 ignore "Authentication-Results:"
 ignore "DomainKey-Signature:"
 ignore "DKIM-Signature:"
+unignore "Message-Id:"
 hdr_order Date From To Cc
-alternative_order text/plain text/html *
 auto_view text/html
+alternative_order text/plain text/html *
 bind editor <Tab> complete-query
 bind editor ^T complete
 bind editor <space> noop
@@ -36,7 +40,11 @@ bind index,pager R group-reply
 # Don't record outgoing email: already done by Gmail
 unset record
 
-set index_format = "%4C (%4c) %Z %?GI?%GI& ? %[%d/%b]  %-20.19F %?K?%15.14K&               ? %?M?(%3M)&     ? %?X?¤& ? %s %> %?g?%g?"
+set index_format = "%4C (%4c) %Z %?GI?%GI& ? %[%d/%b]  %-28.27F %?M?(%3M)&     ? %?X?¤& ? %s %> %?g?%g?"
+
+set query_command="notmuch-addrlookup --mutt '%s'"
+
+set hidden_tags="unread,draft,flagged,passed,replied,attachment,signed,encrypted,inbox"
 
 # Composing
 set forward_format = "Fwd: %s"
@@ -53,29 +61,34 @@ bind index <space>  collapse-thread
 bind index _ collapse-all
 bind index r recall-message
 
+bind index g        noop
 bind index gg       first-entry
 bind index G        last-entry
-bind index,pager y delete-message
 
-bind index,pager \Cy delete-thread
+# Archive
+# We restrict all archive-related stuff to INBOX
+# All folders should not allow archive actions
+folder-hook INBOX 'macro index,pager y "<enter-command>unset resolve<enter><clear-flag>N<enter-command>set resolve<enter><save-message><enter>" "Archive the message"'
+folder-hook INBOX 'macro index,pager Y "<enter-command>unset resolve<enter><tag-prefix><clear-flag>N<enter-command>set resolve<enter><save-message><enter>" "Archive the message"'
+folder-hook INBOX 'macro index,pager \Cy "<tag-thread><clear-flag>N<save-message><enter>" "Archive thread of selected message"'
 
+# Deletion
+set maildir_trash = yes
+macro index D "<tag-prefix>d" "Move tagged messages to trash"
+macro index \Cd "<tag-thread>d" "Move thread to trash"
+
+# Limit view
+bind index l noop
 bind index L limit
-
 macro index la "Lall<enter>" "Limit to all"
 macro index ln "L~N<enter>" "Limit to new messages"
 
 # Cheat code
 macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "Mark all messages as read"
 
-macro index C "<copy-message>?<toggle-mailboxes>" "Copy a message to a mailbox"
-macro index M "<save-message>?<toggle-mailboxes>" "Move a message to a mailbox"
-macro index gl "<change-folder>?" "Move to label"
+bind index,pager x entire-thread
 
-macro index D "<tag-prefix>d" "Move tagged messages to trash"
-
-macro index \Cd "<tag-thread>d" "Move thread to trash"
-
-macro index \Ca "<next-unread-mailbox><limit>~N<enter>" "Go to the next mailbox with unread messages"
+bind index \eq vfolder-from-query
 
 # TODO: Sync email
 # macro index O "<shell-escape>offlineimap<enter>"           "run offlineimap to sync all mail"

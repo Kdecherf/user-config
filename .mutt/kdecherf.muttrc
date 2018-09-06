@@ -5,21 +5,36 @@ set signature="~/.mutt/kdecherf.signature"
 
 alternates "me@kdecherf.com|kdecherf@gmail.com"
 
+set nm_default_uri="notmuch:///home/kdecherf/.mail/kdecherf"
+set virtual_spoolfile=yes
+virtual-mailboxes \
+      "INBOX"        "notmuch://?query=folder:INBOX" \
+      "Sent"        "notmuch://?query=folder:Sent" \
+      "Archive"        "notmuch://?query=folder:Archive" \
+      "Archive.2018"        "notmuch://?query=folder:Archive.2018" \
+      "Drafts"        "notmuch://?query=folder:Drafts" \
+      "Trash"        "notmuch://?query=folder:Trash" \
+      "List: Starred"      "notmuch://?query=is:flagged" \
+      "List: Debian"       "notmuch://?query=to:debian-security-announce@lists.debian.org" \
+
 # Account-specific folders
-set postponed="+kdecherf/[Gmail].Drafts"
+set postponed="+kdecherf/Drafts"
 set spoolfile="+kdecherf/INBOX"
+set trash="+kdecherf/Trash"
+folder-hook INBOX 'save-hook . "+kdecherf/Archive"
 
 # Account-specific cache folders
 set header_cache="~/.cache/mutt/kdecherf/headers"
 set message_cachedir="~/.cache/mutt/kdecherf/bodies"
 
 # Account-specific macros
-macro index,pager d "<save-message>=kdecherf/[Gmail].Trash<enter>" "Trash the message"
-macro index,pager gi "<change-folder>=kdecherf/INBOX<enter>" "Go to INBOX"
-macro index,pager ga "<change-folder>=kdecherf/[Gmail].All\ Mail<enter>" "Go to All Mail"
-macro index,pager gd "<change-folder>=kdecherf/[Gmail].Drafts<enter>" "Go to Drafts"
-macro index,pager gs "<change-folder>=kdecherf/[Gmail].Sent\ Mail<enter>" "Go to Sent Mail"
-macro index,pager gS "<change-folder>=kdecherf/[Gmail].Starred<enter>" "Go to Starred"
+bind pager g noop
+macro index,pager gi "<change-vfolder>INBOX<enter>" "Go to INBOX"
+macro index,pager ga "<change-vfolder>Archive<enter>" "Go to All Mail"
+macro index,pager gd "<change-vfolder>Drafts<enter>" "Go to Drafts"
+macro index,pager gs "<change-vfolder>Sent<enter>" "Go to Sent Mail"
+macro index,pager gt "<change-vfolder>Trash<enter>" "Go to Trash"
+macro index,pager gS "<change-vfolder>List: Starred<enter>" "Go to Starred"
 
 # GPG
 set pgp_encrypt_only_command="gpg --batch --quiet --no-verbose --output - --encrypt --textmode --armor --always-trust --encrypt-to 0xA81E6E2F -r %r %f"
