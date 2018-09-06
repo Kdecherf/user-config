@@ -1,5 +1,7 @@
-text/html;     w3m %s; nametemplate=%s.html
-text/html;     w3m -dump %s; nametemplate=%s.html; copiousoutput
-image/*;       mutt_bgrun eog %s
-application/pdf;  mutt_bgrun zathura -p /usr/lib64/zathura %s
-application/download; mutt_bgrun run-mailcap '%s'; needsterminal
+image/*;                eog '%s'
+
+application/download;   run-mailcap '%s'
+application/octet-stream;   run-mailcap '%s'
+application/pdf;        evince '%s'
+
+text/plain;             less '%s'; copiousoutput
