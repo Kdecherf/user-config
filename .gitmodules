@@ -7,3 +7,6 @@
 [submodule "deps/powerlevel9k"]
 	path = deps/powerlevel9k
 	url = https://github.com/bhilburn/powerlevel9k.git
+[submodule "deps/splatmoji"]
+	path = deps/splatmoji
+	url = https://github.com/cspeterson/splatmoji.git
