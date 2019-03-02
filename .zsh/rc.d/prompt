@@ -2,7 +2,11 @@ setopt PROMPT_SUBST
 autoload -Uz colors
 colors
 
-PROMPT='%B%F{green}%n@%m%f %F{blue}%(4~:…:)%3~ ${vcs_info_msg_0_}%# %f%b'
+PROMPT='%F{green}%n@%m%f %F{blue}%(4~:…:)%3~ ${vcs_info_msg_0_}%# %f'
+
+if [[ ${TERM_PROGRAM} != "vscode" ]]; then
+   PROMPT="%B${PROMPT}%b"
+fi
 
 precmd(){
 vcs_info
