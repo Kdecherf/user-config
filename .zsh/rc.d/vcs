@@ -12,15 +12,7 @@ zstyle ':vcs_info:git*:*' unstagedstr '⏺'
 
 zstyle ':vcs_info:git*:*' patch-format ''
 
-zstyle ':vcs_info:git*+set-message:*' hooks git-color git-misc-st git-misc-stage git-misc-stash git-icon-branch
-
-# Set revision var to yellow color if there's unstaged changes
-function +vi-git-color() {
-   hook_com[revision]="%F{green}"
-   if [[ ! -z ${hook_com[unstaged]} ]] ; then
-      hook_com[revision]="%F{yellow}"
-   fi
-}
+zstyle ':vcs_info:git*+set-message:*' hooks git-misc-st git-misc-stage git-misc-stash git-icon-branch
 
 function +vi-git-icon-branch() {
    if [[ ${hook_com[branch]} =~ '^tags/(.+)' ]]; then
@@ -52,8 +44,14 @@ function +vi-git-misc-st() {
     fi
 }
 
+# Add stagedstr and unstagedstr to hook_com[misc]
+# Also change color to yellow if there's changes
+# Note: we use hook_com[revision]/%i for the color
+# as get-revision is set to false
 function +vi-git-misc-stage() {
    local -a gitstage
+
+   hook_com[revision]="%F{green}"
    if [[ ! -z ${hook_com[unstaged]} ]] ; then
       gitstage+=( "${hook_com[unstaged]}" )
    fi
@@ -61,7 +59,8 @@ function +vi-git-misc-stage() {
       gitstage+=( "${hook_com[staged]}" )
    fi
    if [[ $#gitstage -gt 0 ]]; then
-      hook_com[misc]+=" ${gitstage}"
+      hook_com[misc]+=" ${(j::)gitstage}"
+      hook_com[revision]="%F{yellow}"
    fi
 }
 
