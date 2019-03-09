@@ -7,8 +7,9 @@ call vundle#begin()
    " let Vundle manage Vundle, required
    Plugin 'gmarik/Vundle.vim'
 
-   Plugin 'vim-airline/vim-airline'
-   Plugin 'vim-airline/vim-airline-themes'
+   Plugin 'itchyny/lightline.vim'
+
+   Plugin 'lumiliet/vim-twig'
 
    " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -37,7 +38,7 @@ set smartcase
 
 " Status bar -> Replace with vim-airplane plugin
 set laststatus=2              " show ever
-set showmode                  " show mode
+set noshowmode                " no show mode (dup with lightline)
 set showcmd                   " show cmd
 set ruler                     " show cursor line number
 set shm=atI                   " cut large messages
@@ -57,10 +58,3 @@ map dor :diffget REMOTE<CR>
 
 highlight RedundantSpaces ctermbg=red guibg=red
 match RedundantSpaces /\s\+$\| \+\ze\t\|\t/
-
-" Airline
-let g:airline_theme = 'powerlineish'
-let g:airline_powerline_fonts = 1
-let g:airline_inactive_collapse = 0
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tagbar#enabled = 1
