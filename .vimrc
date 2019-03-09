@@ -36,7 +36,6 @@ set hlsearch
 set ignorecase
 set smartcase
 
-" Status bar -> Replace with vim-airplane plugin
 set laststatus=2              " show ever
 set noshowmode                " no show mode (dup with lightline)
 set showcmd                   " show cmd
@@ -48,13 +47,10 @@ if &term =~ '256color'
   " disable Background Color Erase (BCE)
   set t_ut=
 endif
+let g:hybrid_custom_term_colors = 1
 colorscheme hybrid
 
 vnoremap <C-X> <Esc>`.``gvP``P
-
-map dol :diffget LOCAL<CR>
-map dob :diffget BASE<CR>
-map dor :diffget REMOTE<CR>
 
 highlight RedundantSpaces ctermbg=red guibg=red
 match RedundantSpaces /\s\+$\| \+\ze\t\|\t/
