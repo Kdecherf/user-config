@@ -1,8 +1,8 @@
 autoload -Uz vcs_info
 
 zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:git*' actionformats '%F{5}[%f%s %i%b%F{red}|%a%f%i%m%F{5}]%f '
-zstyle ':vcs_info:git*' formats '%F{5}[%f%s %i%b%m%F{5}]%f '
+zstyle ':vcs_info:git*' actionformats '%F{magenta}[%f%s %i%b%F{yellow}|%F{red}%a%f%i%m%F{magenta}]%f '
+zstyle ':vcs_info:git*' formats '%F{magenta}[%f%s %i%b%i%m%F{magenta}]%f '
 zstyle ':vcs_info:git*:*' check-for-changes true
 # We explicitly disable get-revision to use %i for another purpose
 zstyle ':vcs_info:git*:*' get-revision false
@@ -15,10 +15,12 @@ zstyle ':vcs_info:git*:*' patch-format ''
 zstyle ':vcs_info:git*+set-message:*' hooks git-misc-st git-misc-stage git-misc-stash git-icon-branch
 
 function +vi-git-icon-branch() {
-   if [[ ${hook_com[branch]} =~ '^tags/(.+)' ]]; then
+   if [[ ${hook_com[branch]} =~ '^tags/(.+)' ]]; then # Tag view
       hook_com[branch]="(${match[1]})"
-   elif [[ ${hook_com[branch]} =~ '~|\^' ]]; then
+   elif [[ ${hook_com[branch]} =~ '~|\^' ]]; then # Commit view
       hook_com[branch]="<$(git rev-parse --short HEAD)>"
+   elif [[ ${hook_com[branch]} =~ '^remotes/pr/(.+)' ]]; then # Github PR view
+      hook_com[branch]="%F{cyan}review:pr/${match[1]}%f"
    fi
 }
 
