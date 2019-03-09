@@ -1,4 +1,4 @@
-bind status C !>git commit -s
+bind status C !>git commit -s -v
 
 bind status I !git add -i %(file)
 bind status P ?git add -p %(file)

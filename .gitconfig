@@ -14,8 +14,8 @@
    f = fetch --all --prune
    pl = pull
    st = status -sb
-   ci = commit -s
-   ca = commit -s --amend
+   ci = commit -s -v
+   ca = commit -s -v --amend
    cam = commit -s --amend -C HEAD
    br = branch
    co = checkout
