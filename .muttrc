@@ -82,6 +82,7 @@ bind index l noop
 bind index L limit
 macro index la "Lall<enter>" "Limit to all"
 macro index ln "L~N<enter>" "Limit to new messages"
+macro index lf "L~F<enter>" "Limit to flagged messages"
 
 # Cheat code
 macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "Mark all messages as read"
