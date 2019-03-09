@@ -11,6 +11,7 @@
    a = add
    d = rm
    p = push
+   f = fetch --all --prune
    pl = pull
    st = status -sb
    ci = commit -s
