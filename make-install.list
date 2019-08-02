@@ -9,8 +9,6 @@ f .mailcap
 f .msmtprc
 d .mutt
 f .muttrc
-f .offlineimap.py
-f .offlineimaprc
 f .ssh/config
 f .tigrc
 f .tmux.conf
