@@ -11,7 +11,7 @@
 
 set $mod Mod4
 
-font pango:Knack Nerd Font 8.5
+font pango:dejavu sans mono,font awesome 5 9
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -167,7 +167,6 @@ bindsym $mod+r mode "resize"
 bar {
   status_command i3status
   position top
-  font pango:Knack Nerd Font 10
 
 colors {
     background #27272E
