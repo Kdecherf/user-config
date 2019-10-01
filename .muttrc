@@ -42,7 +42,7 @@ unset record
 
 set index_format = "%4C (%4c) %Z %?GI?%GI& ? %[%d/%b]  %-28.27F %?M?(%3M)&     ? %?X?¤& ? %s %> %?g?%g?"
 
-set query_command="notmuch-addrlookup --mutt '%s'"
+set query_command="notmuch address --deduplicate=address --output=address -- from:/%s/"
 
 set hidden_tags="unread,draft,flagged,passed,replied,attachment,signed,encrypted,inbox"
 
