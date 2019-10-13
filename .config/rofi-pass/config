@@ -1,3 +1,5 @@
 default_do="copyPass"
-clip=clipboard
-BROWSER=xdg-open
+autotype="Alt+z"
+type_user="Alt+s"
+type_pass="Alt+d"
+open_url="Alt+e"
