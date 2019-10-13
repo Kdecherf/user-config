@@ -6,7 +6,7 @@ xset s off
 xset -b
 
 # Enable zapping (C-A-<Bksp> kills X)
-setxkbmap -option terminate:ctrl_alt_bksp
+setxkbmap fr -option terminate:ctrl_alt_bksp
 
 # Enforce correct locales from the beginning
 unset LC_COLLATE
