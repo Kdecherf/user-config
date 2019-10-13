@@ -10,10 +10,14 @@ color status color142 default
 # index stuff
 color tree color193 default
 color indicator color233 color193
-color index color229 default ~A
-color index color76 default ~N
+color index color143 default ~A
+color index color34 default ~N
 color index color138 default ~O
-color index color202 default ~F
+
+color index color229 default "~A ~p"
+color index color82 default "~N ~p"
+
+color index color208 default ~F
 
 # header stuff
 color hdrdefault  color173     default 
