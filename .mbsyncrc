@@ -1,0 +1,34 @@
+BufferLimit 128m
+
+IMAPAccount kdecherf
+Host imap.fastmail.com
+User kevin@kdecherf.com
+PassCmd "pass fastmail.com/kevin@kdecherf.com | grep fujitaka | sed -e 's/.*: \\(.*\\)/\\1/'"
+SSLType IMAPS
+
+IMAPStore kdecherf-remote
+Account kdecherf
+
+MaildirStore kdecherf-local
+Path ~/.mail/kdecherf/
+Inbox ~/.mail/kdecherf/INBOX
+Flatten .
+SubFolders Verbatim
+
+Channel kdecherf
+Master :kdecherf-remote:
+Slave :kdecherf-local:
+Patterns * "!*Archive/%"
+Create Both
+Expunge Both
+SyncState *
+CopyArrivalDate yes
+
+Channel kdecherf-archive
+Master :kdecherf-remote:
+Slave :kdecherf-local:
+Patterns "*Archive/%"
+Create Both
+Expunge Both
+SyncState *
+CopyArrivalDate yes

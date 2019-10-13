@@ -6,6 +6,7 @@ f .gitconfig
 d .i3
 f .i3status.conf
 f .mailcap
+f .mbsyncrc
 f .msmtprc
 d .mutt
 f .muttrc
