@@ -8,7 +8,14 @@ call vundle#begin()
    Plugin 'gmarik/Vundle.vim'
 
    Plugin 'itchyny/lightline.vim'
+   Plugin 'junegunn/fzf.vim'
+   Plugin 'junegunn/fzf'
    Plugin 'tpope/vim-surround'
+   Plugin 'airblade/vim-gitgutter'
+   Plugin 'dhruvasagar/vim-table-mode'
+   Plugin 'nathanaelkane/vim-indent-guides'
+   Plugin 'mileszs/ack.vim'
+   Plugin 'tpope/vim-vinegar'
 
    Plugin 'lumiliet/vim-twig'
 
@@ -55,3 +62,8 @@ vnoremap <C-X> <Esc>`.``gvP``P
 
 highlight RedundantSpaces ctermbg=red guibg=red
 match RedundantSpaces /\s\+$\| \+\ze\t\|\t/
+
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
