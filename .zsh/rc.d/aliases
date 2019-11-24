@@ -26,3 +26,6 @@ git-gone-branches() {
 }
 
 alias fssh='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
+
+alias ignite='pkexec ignite'
+alias docker='pkexec docker'
