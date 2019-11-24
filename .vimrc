@@ -8,6 +8,7 @@ call vundle#begin()
    Plugin 'gmarik/Vundle.vim'
 
    Plugin 'itchyny/lightline.vim'
+   Plugin 'tpope/vim-surround'
 
    Plugin 'lumiliet/vim-twig'
 
