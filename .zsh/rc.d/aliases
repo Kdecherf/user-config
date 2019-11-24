@@ -21,4 +21,8 @@ ssh() {
    /bin/ssh $@
 }
 
+git-gone-branches() {
+   git branch -vv | grep -E "\[[[:graph:]]+/[[:graph:]]+: gone\]" | awk -F' ' '{print $1}'
+}
+
 alias fssh='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
