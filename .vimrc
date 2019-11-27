@@ -16,6 +16,8 @@ call vundle#begin()
    Plugin 'nathanaelkane/vim-indent-guides'
    Plugin 'mileszs/ack.vim'
    Plugin 'tpope/vim-vinegar'
+   Plugin 'editorconfig/editorconfig-vim'
+   Plugin 'terryma/vim-multiple-cursors'
 
    Plugin 'lumiliet/vim-twig'
 
