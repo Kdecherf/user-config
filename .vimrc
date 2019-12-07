@@ -52,6 +52,11 @@ set shiftwidth=3
 set hlsearch
 set ignorecase
 set smartcase
+nnoremap ch :nohls<CR>
+
+set list
+set lcs=tab:»·
+set lcs+=trail:·
 
 set laststatus=2              " show ever
 set noshowmode                " no show mode (dup with lightline)
@@ -72,10 +77,15 @@ hi Normal ctermfg=250
 
 vnoremap <C-X> <Esc>`.``gvP``P
 
-highlight RedundantSpaces ctermbg=red guibg=red
-match RedundantSpaces /\s\+$\| \+\ze\t\|\t/
+nnoremap ; :Buffers<CR>
+nnoremap f :Files<CR>
 nnoremap T :Tags<CR>
 nnoremap t :BTags<CR>
+nnoremap s :Ag<CR>
+
+highlight RedundantSpaces ctermbg=red
+match RedundantSpaces /\s\+$/
+
 set tags=./.ctags.out;
 
 " cscope
