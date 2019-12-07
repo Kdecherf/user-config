@@ -1,17 +1,18 @@
 #!/bin/sh
 
-while read t n ; do
-   localPath="$(dirname $n)"
+while read t n d ; do
+   dn=${d:-$n}
+   localPath="$(dirname $dn)"
    targetPath="$HOME/$localPath"
-   name="$(basename $n)"
+   name="$(basename $dn)"
    if [[ "$localPath" != "." ]]; then
-      mkdir -p "$targetPath"
+      test -d "$targetPath" || mkdir -p "$targetPath"
    else
       targetPath="$HOME"
    fi
    if [[ "$t" == "l" ]]; then
-      cp -a "$(pwd)/$n" "$targetPath/"
+      test -f "$targetPath/$n" || cp -a "$(pwd)/$n" "$targetPath/"
    else
-      ln -sfnT "$(pwd)/$n" "$targetPath/$name"
+      test -L "$targetPath/$name" || ln -sfnT "$(pwd)/$n" "$targetPath/$name"
    fi
 done < make-install.list
