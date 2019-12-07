@@ -7,6 +7,8 @@ call vundle#begin()
    " let Vundle manage Vundle, required
    Plugin 'gmarik/Vundle.vim'
 
+   Plugin 'gkapfham/vim-vitamin-onec'
+
    Plugin 'itchyny/lightline.vim'
    Plugin 'junegunn/fzf.vim'
    Plugin 'junegunn/fzf'
@@ -57,8 +59,11 @@ if &term =~ '256color'
   " disable Background Color Erase (BCE)
   set t_ut=
 endif
-let g:hybrid_custom_term_colors = 1
-colorscheme hybrid
+colorscheme vitaminonec
+
+" colorscheme overrides
+hi Search ctermbg=236 cterm=NONE
+hi Normal ctermfg=250
 
 vnoremap <C-X> <Esc>`.``gvP``P
 
