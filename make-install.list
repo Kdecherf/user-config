@@ -6,6 +6,7 @@ f git/gitconfig .gitconfig
 f git/gitignore .gitignore
 d .i3
 f .i3status.conf
+f ignore .ignore
 f .mailcap
 f .mbsyncrc
 f .msmtprc
