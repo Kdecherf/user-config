@@ -12,7 +12,6 @@
    d = rm
    p = push
    f = fetch --all --prune
-   pl = pull
    st = status -sb
    ci = commit -s -v
    ca = commit -s -v --amend
@@ -32,7 +31,6 @@
    tk = log --name-status --pretty=oneline
    kick = update-index --assume-unchanged
    unkick = update-index --no-assume-unchanged
-   s = svn
    pe = format-patch -M -C --find-copies-harder --stdout
 
 [color]
@@ -42,6 +40,7 @@
    ui = true
 [core]
    eol = lf
+	excludesfile = /home/kdecherf/.gitignore
 [merge]
    tool = vimdiff
 [mergetool "fugitive"]
