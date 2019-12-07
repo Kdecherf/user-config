@@ -19,6 +19,7 @@ call vundle#begin()
    Plugin 'tpope/vim-vinegar'
    Plugin 'editorconfig/editorconfig-vim'
    Plugin 'terryma/vim-multiple-cursors'
+   Plugin 'tpope/vim-commentary'
 
    " git-related plugins
    Plugin 'rhysd/git-messenger.vim'
