@@ -13,7 +13,6 @@ call vundle#begin()
    Plugin 'junegunn/fzf.vim'
    Plugin 'junegunn/fzf'
    Plugin 'tpope/vim-surround'
-   Plugin 'airblade/vim-gitgutter'
    Plugin 'dhruvasagar/vim-table-mode'
    Plugin 'nathanaelkane/vim-indent-guides'
    Plugin 'mileszs/ack.vim'
@@ -21,6 +20,11 @@ call vundle#begin()
    Plugin 'editorconfig/editorconfig-vim'
    Plugin 'terryma/vim-multiple-cursors'
 
+   " git-related plugins
+   Plugin 'rhysd/git-messenger.vim'
+   Plugin 'airblade/vim-gitgutter'
+
+   " syntax-related plugins
    Plugin 'lumiliet/vim-twig'
 
    " All of your Plugins must be added before the following line
@@ -69,6 +73,9 @@ vnoremap <C-X> <Esc>`.``gvP``P
 
 highlight RedundantSpaces ctermbg=red guibg=red
 match RedundantSpaces /\s\+$\| \+\ze\t\|\t/
+" git-messenger configuration
+let g:git_messenger_no_default_mappings = v:true
+nmap gm <Plug>(git-messenger)
 
 if executable('ag')
   let g:ackprg = 'ag --path-to-ignore ~/.ignore --vimgrep'
