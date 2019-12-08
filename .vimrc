@@ -78,7 +78,9 @@ hi Normal ctermfg=250
 vnoremap <C-X> <Esc>`.``gvP``P
 
 nnoremap ; :Buffers<CR>
-nnoremap f :Files<CR>
+nnoremap ff :Files<CR>
+nnoremap fg :GFiles<CR>
+nnoremap fs :GFiles?<CR>
 nnoremap T :Tags<CR>
 nnoremap t :BTags<CR>
 nnoremap s :Ag<CR>
