@@ -65,9 +65,11 @@ bind index g        noop
 bind index gg       first-entry
 bind index G        last-entry
 
-# Archive
-# We restrict all archive-related stuff to INBOX
-# All folders should not allow archive actions
+
+# Archive-related bindings are noop outside of the INBOX folder
+folder-hook . 'bind index,pager y noop'
+folder-hook . 'bind index,pager Y noop'
+folder-hook . 'bind index,pager \Cy noop'
 folder-hook INBOX 'macro index,pager y "<enter-command>unset resolve<enter><clear-flag>N<enter-command>set resolve<enter><save-message><enter>" "Archive the message"'
 folder-hook INBOX 'macro index,pager Y "<enter-command>unset resolve<enter><tag-prefix><clear-flag>N<enter-command>set resolve<enter><save-message><enter>" "Archive the message"'
 folder-hook INBOX 'macro index,pager \Cy "<tag-thread><clear-flag>N<save-message><enter>" "Archive thread of selected message"'
