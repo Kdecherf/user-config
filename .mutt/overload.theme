@@ -5,14 +5,14 @@ color index color33 color235 "~f notifications@github.com ~C mention@noreply.git
 color index brightcolor33 color235 "~N ~f notifications@github.com ~C mention@noreply.github.com ~B @Kdecherf"
 
 # notmuch: thread having a message tagged todo
-color index color202 color235 "~(~Y todo)"
-color index brightcolor202 color235 "~N ~(~Y todo)"
+color index color202 color235 "~Y todo"
+color index brightcolor202 color235 "~N ~Y todo"
 # notmuch: thread having a message tagged merged (github)
-color index color71 color235 "~(~Y merged)"
-color index brightcolor71 color235 "~N ~(~Y merged)"
+color index color71 color235 "~Y merged"
+color index brightcolor71 color235 "~N ~Y merged"
 # notmuch: thread having a message tagged closed (github)
-color index color94 color235 "~(~Y closed)"
-color index brightcolor94 color235 "~N ~(~Y closed)"
+color index color94 color235 "~Y closed"
+color index brightcolor94 color235 "~N ~Y closed"
 
 # deleted message
 color index color242 default ~D
