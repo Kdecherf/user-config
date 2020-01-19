@@ -20,7 +20,8 @@ virtual-mailboxes \
 # Account-specific folders
 set postponed="+kdecherf/Drafts"
 set spoolfile="+kdecherf/INBOX"
-set trash="+kdecherf/Trash"
+folder-hook . 'set trash="+kdecherf/Trash"'
+folder-hook Trash$ 'unset trash'
 folder-hook INBOX 'save-hook . "+kdecherf/Archive"'
 
 # Account-specific cache folders
