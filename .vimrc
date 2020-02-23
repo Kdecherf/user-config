@@ -20,6 +20,14 @@ call vundle#begin()
    Plugin 'editorconfig/editorconfig-vim'
    Plugin 'terryma/vim-multiple-cursors'
    Plugin 'tpope/vim-commentary'
+   Plugin 'majutsushi/tagbar'
+
+   " lsp-related plugins
+   Plugin 'prabirshrestha/async.vim'
+   Plugin 'prabirshrestha/vim-lsp'
+   Plugin 'mattn/vim-lsp-settings'
+   Plugin 'prabirshrestha/asyncomplete.vim'
+   Plugin 'prabirshrestha/asyncomplete-lsp.vim'
 
    " git-related plugins
    Plugin 'rhysd/git-messenger.vim'
@@ -27,6 +35,7 @@ call vundle#begin()
 
    " syntax-related plugins
    Plugin 'lumiliet/vim-twig'
+   Plugin 'StanAngeloff/php.vim'
 
    " All of your Plugins must be added before the following line
 call vundle#end()            " required
