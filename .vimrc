@@ -21,6 +21,8 @@ call vundle#begin()
    Plugin 'terryma/vim-multiple-cursors'
    Plugin 'tpope/vim-commentary'
    Plugin 'majutsushi/tagbar'
+   Plugin 'tpope/vim-obsession'
+   Plugin 'MattesGroeger/vim-bookmarks'
 
    " lsp-related plugins
    Plugin 'prabirshrestha/async.vim'
