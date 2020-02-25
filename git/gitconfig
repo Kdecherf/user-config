@@ -32,6 +32,8 @@
    kick = update-index --assume-unchanged
    unkick = update-index --no-assume-unchanged
    pe = format-patch -M -C --find-copies-harder --stdout
+   edit-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; vim `f`"
+   add-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; git add `f`"
 
 [color]
    diff = auto
@@ -54,3 +56,5 @@
    textconv = gpg --no-tty --decrypt --quiet
 [blame "gpg"]
    textconv = gpg --no-tty --decrypt --quiet
+[rerere]
+   enabled = true
