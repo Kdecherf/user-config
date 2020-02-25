@@ -70,10 +70,8 @@ function +vi-git-misc-stage() {
 function +vi-git-misc-stash() {
     local -a stashes
 
-    if [[ -s ${hook_com[base]}/.git/refs/stash ]] ; then
-        #stashes=$(git stash list 2>/dev/null | wc -l)
-        stashes=$(cat ${hook_com[base]}/.git/refs/stash | wc -l)
-        #stashes=$(echo "\u$(printf "%X" $(( 0x2789 + ${stashes})))")
+    if [[ -s ${hook_com[base]}/.git/logs/refs/stash ]] ; then
+        stashes=$(cat ${hook_com[base]}/.git/logs/refs/stash | wc -l)
 
         hook_com[misc]+=" ✇${stashes}"
     fi
