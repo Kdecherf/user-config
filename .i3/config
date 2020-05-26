@@ -11,7 +11,7 @@
 
 set $mod Mod4
 
-font pango:dejavu sans mono,font awesome 5 9
+font pango:dejavu sans mono,font awesome 5 free regular 8
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -115,12 +115,16 @@ bindsym $mod+Shift+8 move workspace $workspace8
 bindsym $mod+Shift+9 move workspace $workspace9
 bindsym $mod+Shift+0 move workspace $workspace10
 
+bindsym $mod+w exec i3-input -F 'move workspace to output "%s"' -P 'Output: '
+
 # reload the configuration file
 bindsym $mod+Shift+C reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+R restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+E exit
+
+bindsym $mod+c exec "i3-msg 'floating toggle; sticky toggle; resize shrink width 10000px; resize grow width 400px; resize shrink height 10000px; resize grow height 250px;move position 10px 10px;'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
