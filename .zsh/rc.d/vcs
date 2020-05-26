@@ -1,14 +1,14 @@
 autoload -Uz vcs_info
 
 zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:git*' actionformats '%F{magenta}[%f%s %i%b%F{yellow}|%F{red}%a%f%i%m%F{magenta}]%f '
-zstyle ':vcs_info:git*' formats '%F{magenta}[%f%s %i%b%i%m%F{magenta}]%f '
+zstyle ':vcs_info:git*' actionformats '%f %i%b%F{yellow}|%F{red}%a%f%i%m%f '
+zstyle ':vcs_info:git*' formats '%f %i%b%i%m%f '
 zstyle ':vcs_info:git*:*' check-for-changes true
 # We explicitly disable get-revision to use %i for another purpose
 zstyle ':vcs_info:git*:*' get-revision false
 
-zstyle ':vcs_info:git*:*' stagedstr '✚'
-zstyle ':vcs_info:git*:*' unstagedstr '⏺'
+zstyle ':vcs_info:git*:*' stagedstr '＋'
+zstyle ':vcs_info:git*:*' unstagedstr '⬤'
 
 zstyle ':vcs_info:git*:*' patch-format ''
 
@@ -35,10 +35,15 @@ function +vi-git-misc-st() {
 
     if [[ -n ${remote} ]] ; then
         ahead=$(git rev-list ${hook_com[branch]}@{upstream}..HEAD 2>/dev/null | wc -l)
-        (( $ahead )) && gitstatus+=( "⭡${ahead}" )
-
         behind=$(git rev-list HEAD..${hook_com[branch]}@{upstream} 2>/dev/null | wc -l)
-        (( $behind )) && gitstatus+=( "⭣${behind}" )
+
+        if [[ $ahead -gt 0 && $behind -gt 0 ]]; then
+           gitstatus+=( "${behind}⫽${ahead}" )
+        elif [[ $ahead -gt 0 ]]; then
+           gitstatus+=( "${ahead}⟫" )
+        elif [[ $behind -gt 0 ]]; then
+           gitstatus+=( "⇣${behind}" )
+        fi
 
         if [[ $#gitstatus -gt 0 ]]; then
            hook_com[misc]+=" ${(j: :)gitstatus}"
@@ -70,10 +75,8 @@ function +vi-git-misc-stage() {
 function +vi-git-misc-stash() {
     local -a stashes
 
-    if [[ -s ${hook_com[base]}/.git/logs/refs/stash ]] ; then
-        stashes=$(cat ${hook_com[base]}/.git/logs/refs/stash | wc -l)
-
-        hook_com[misc]+=" ✇${stashes}"
+    if [[ -s ${hook_com[base]}/.git/refs/stash ]] ; then
+        hook_com[misc]+=" ＃"
     fi
 }
 
