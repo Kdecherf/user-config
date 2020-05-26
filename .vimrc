@@ -39,6 +39,13 @@ call vundle#begin()
    Plugin 'lumiliet/vim-twig'
    Plugin 'StanAngeloff/php.vim'
 
+   Plugin 'tpope/vim-salve'
+   Plugin 'tpope/vim-projectionist'
+   Plugin 'tpope/vim-dispatch'
+   Plugin 'tpope/vim-fireplace'
+
+   Plugin 'luochen1990/rainbow'
+
    " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
@@ -131,5 +138,7 @@ if executable('ag')
   let g:ackprg = 'ag --path-to-ignore ~/.ignore --vimgrep'
 endif
 
+" jump to next conflict marker in git
 map <silent> <C-U> /^\(<\{7\}\\|>\{7\}\\|=\{7\}\\|\|\{7\}\)\( \\|$\)<CR>
 
+let g:rainbow_active = 0
