@@ -3,7 +3,8 @@
 !
 
 ! General
-URxvt*font: xft:dejavu sans mono:pixelsize=12:antialias=true,hinting=true, xft:Noto Color Emoji:pixelsize=7, xft:Symbola:pixelsize=9,antialias=true
+URxvt*font: xft:sarasa term cl:pixelsize=13:antialias=true,hinting=true
+
 URxvt.urgentOnBell:		true
 
 ! Scroll
