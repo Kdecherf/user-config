@@ -23,6 +23,7 @@ call vundle#begin()
    Plugin 'majutsushi/tagbar'
    Plugin 'tpope/vim-obsession'
    Plugin 'MattesGroeger/vim-bookmarks'
+   Plugin 'junegunn/vim-easy-align'
 
    " lsp-related plugins
    Plugin 'prabirshrestha/async.vim'
@@ -142,3 +143,4 @@ endif
 map <silent> <C-U> /^\(<\{7\}\\|>\{7\}\\|=\{7\}\\|\|\{7\}\)\( \\|$\)<CR>
 
 let g:rainbow_active = 0
+let g:lsp_diagnostics_echo_cursor = 1
