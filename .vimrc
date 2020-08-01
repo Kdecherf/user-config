@@ -20,6 +20,7 @@ call vundle#begin()
    Plugin 'nathanaelkane/vim-indent-guides'
    Plugin 'editorconfig/editorconfig-vim'
    Plugin 'terryma/vim-multiple-cursors'
+   Plugin 'lambdalisue/reword.vim'
    Plugin 'tpope/vim-commentary'
    Plugin 'majutsushi/tagbar'
    Plugin 'tpope/vim-obsession'
@@ -32,12 +33,18 @@ call vundle#begin()
 
    " git-related plugins
    Plugin 'rhysd/git-messenger.vim'
+   Plugin 'tpope/vim-fugitive'
    Plugin 'airblade/vim-gitgutter'
 
    " syntax-related plugins
    Plugin 'lumiliet/vim-twig'
    Plugin 'StanAngeloff/php.vim'
 
+   Plugin 'pangloss/vim-javascript'
+   Plugin 'elzr/vim-json'
+   Plugin 'fatih/vim-go'
+   Plugin 'plasticboy/vim-markdown'
+   Plugin 'hashivim/vim-terraform'
    Plugin 'tpope/vim-salve'
    Plugin 'tpope/vim-projectionist'
    Plugin 'tpope/vim-dispatch'
