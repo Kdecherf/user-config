@@ -7,50 +7,55 @@ call vundle#begin()
    " let Vundle manage Vundle, required
    Plugin 'gmarik/Vundle.vim'
 
+   " Colorscheme and related
    Plugin 'NLKNguyen/papercolor-theme'
+   Plugin 'luochen1990/rainbow'
 
+   " Interface
    Plugin 'itchyny/lightline.vim'
    Plugin 'junegunn/goyo.vim'
    Plugin 'junegunn/limelight.vim'
    Plugin 'voldikss/vim-floaterm'
+   Plugin 'nathanaelkane/vim-indent-guides'
+   Plugin 'majutsushi/tagbar'
+
+   " Functionalities
+   Plugin 'tpope/vim-projectionist'
+   Plugin 'tpope/vim-obsession'
    Plugin 'junegunn/fzf.vim'
    Plugin 'junegunn/fzf'
-   Plugin 'tpope/vim-surround'
-   Plugin 'dhruvasagar/vim-table-mode'
-   Plugin 'nathanaelkane/vim-indent-guides'
    Plugin 'editorconfig/editorconfig-vim'
-   Plugin 'terryma/vim-multiple-cursors'
+
+   " Productivity
    Plugin 'lambdalisue/reword.vim'
+   Plugin 'tpope/vim-surround'
+   Plugin 'tpope/vim-dispatch'
    Plugin 'tpope/vim-commentary'
-   Plugin 'majutsushi/tagbar'
-   Plugin 'tpope/vim-obsession'
-   Plugin 'MattesGroeger/vim-bookmarks'
    Plugin 'junegunn/vim-easy-align'
+   Plugin 'dhruvasagar/vim-table-mode'
+   Plugin 'terryma/vim-multiple-cursors'
+   Plugin 'MattesGroeger/vim-bookmarks' " TODO find replacement with fzf and/or coc support
 
    " coc
    Plugin 'antoinemadec/coc-fzf'
    Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 
-   " git-related plugins
+   " Git
    Plugin 'rhysd/git-messenger.vim'
    Plugin 'tpope/vim-fugitive'
    Plugin 'airblade/vim-gitgutter'
 
-   " syntax-related plugins
+   " Languages
    Plugin 'lumiliet/vim-twig'
    Plugin 'StanAngeloff/php.vim'
-
    Plugin 'pangloss/vim-javascript'
    Plugin 'elzr/vim-json'
    Plugin 'fatih/vim-go'
    Plugin 'plasticboy/vim-markdown'
    Plugin 'hashivim/vim-terraform'
+   " clojure
    Plugin 'tpope/vim-salve'
-   Plugin 'tpope/vim-projectionist'
-   Plugin 'tpope/vim-dispatch'
    Plugin 'tpope/vim-fireplace'
-
-   Plugin 'luochen1990/rainbow'
 
    " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -62,7 +67,6 @@ set cindent
 syntax on
 set number
 set showmatch
-set noshowmode
 filetype plugin on
 
 let mapleader = ","
@@ -85,7 +89,6 @@ set lcs=tab:»·
 set lcs+=trail:·
 
 set laststatus=2              " show ever
-set noshowmode                " no show mode (dup with lightline)
 set showcmd                   " show cmd
 set ruler                     " show cursor line number
 set shm=atI                   " cut large messages
@@ -96,9 +99,6 @@ if &term =~ '256color'
   " disable Background Color Erase (BCE)
   set t_ut=
 endif
-
-
-vnoremap <C-X> <Esc>`.``gvP``P
 
 let g:PaperColor_Theme_Options = {
   \   'theme': {
@@ -119,7 +119,13 @@ set colorcolumn=120
 highlight RedundantSpaces ctermbg=red
 match RedundantSpaces /\s\+$/
 
+" lightline
+set noshowmode                " no show mode (dup with lightline)
+
+
 set tags=./.ctags.out;
+
+vnoremap <C-X> <Esc>`.``gvP``P
 
 " fzf
 nnoremap <leader>; :Buffers<CR>
@@ -151,7 +157,9 @@ nmap gm <Plug>(git-messenger)
 " jump to next conflict marker in git
 map <silent> <C-U> /^\(<\{7\}\\|>\{7\}\\|=\{7\}\\|\|\{7\}\)\( \\|$\)<CR>
 
+" rainbow
 let g:rainbow_active = 1
+
 " easy-align
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
