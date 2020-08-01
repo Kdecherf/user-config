@@ -26,12 +26,9 @@ call vundle#begin()
    Plugin 'MattesGroeger/vim-bookmarks'
    Plugin 'junegunn/vim-easy-align'
 
-   " lsp-related plugins
-   Plugin 'prabirshrestha/async.vim'
-   Plugin 'prabirshrestha/vim-lsp'
-   Plugin 'mattn/vim-lsp-settings'
-   Plugin 'prabirshrestha/asyncomplete.vim'
-   Plugin 'prabirshrestha/asyncomplete-lsp.vim'
+   " coc
+   Plugin 'antoinemadec/coc-fzf'
+   Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 
    " git-related plugins
    Plugin 'rhysd/git-messenger.vim'
@@ -122,27 +119,6 @@ match RedundantSpaces /\s\+$/
 
 set tags=./.ctags.out;
 
-" cscope
-function! Cscope(option, query)
-  let color = '{ x = $1; $1 = ""; z = $3; $3 = ""; printf "\033[34m%s\033[0m:\033[31m%s\033[0m\011\033[37m%s\033[0m\n", x,z,$0; }'
-  let opts = {
-  \ 'source':  "cscope -i .cscope.files -f .cscope.out -dL" . a:option . " " . a:query . " | awk '" . color . "'",
-  \ 'options': ['--ansi', '--prompt', '> ',
-  \             '--multi', '--bind', 'alt-a:select-all,alt-d:deselect-all',
-  \             '--color', 'fg:188,fg+:222,bg+:#3a3a3a,hl+:104'],
-  \ 'down': '40%'
-  \ }
-  function! opts.sink(lines)
-    let data = split(a:lines)
-    let file = split(data[0], ":")
-    execute 'e ' . '+' . file[1] . ' ' . file[0]
-  endfunction
-  call fzf#run(opts)
-endfunction
-" Go to definition
-nnoremap <silent> gd :call Cscope('1', expand('<cword>'))<CR>
-" Functions calling this function
-nnoremap <silent> gf :call Cscope('3', expand('<cword>'))<CR>
 
 " git-messenger configuration
 let g:git_messenger_no_default_mappings = v:true
@@ -152,8 +128,80 @@ nmap gm <Plug>(git-messenger)
 map <silent> <C-U> /^\(<\{7\}\\|>\{7\}\\|=\{7\}\\|\|\{7\}\)\( \\|$\)<CR>
 
 let g:rainbow_active = 0
-let g:lsp_diagnostics_echo_cursor = 1
+" coc
+let g:coc_disable_startup_warning = 1
+let g:coc_fzf_preview = 'right:50%'
+let g:coc_fzf_opts = [ '--preview="bat --line-range :300 {}"' ]
 
+let g:coc_global_extensions = [
+   \  "coc-css",
+   \  "coc-docker",
+   \  "coc-explorer",
+   \  "coc-floaterm",
+   \  "coc-fzf-preview",
+   \  "coc-git",
+   \  "coc-highlight",
+   \  "coc-html",
+   \  "coc-json",
+   \  "coc-lists",
+   \  "coc-phpls",
+   \  "coc-sh",
+   \  "coc-syntax",
+   \  "coc-tag",
+   \  "coc-tsserver",
+   \  "coc-yaml"
+   \ ]
+
+" Completion
+set updatetime=300
+
+function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+            \ pumvisible() ? "\<C-n>" :
+            \ <SID>check_back_space() ? "\<Tab>" :
+            \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" position. Coc only does snippet and additional edit on confirm.
+" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+nmap <leader>rn <Plug>(coc-rename)
+nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <leader>ac  <Plug>(coc-codeaction)
+
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+command! -nargs=0 Format :call CocAction('format')
+command! -nargs=? Fold :call CocAction('fold', <f-args>)
+command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
+
+nnoremap <silent> <space>c  :<C-u>CocFzfList commands<cr>
+nnoremap <silent> <space>d  :<C-u>CocFzfList diagnostics --current-buf<cr>
+nnoremap <silent> <space>D  :<C-u>CocFzfList diagnostics<cr>
+nnoremap <silent> <space>o  :<C-u>CocFzfList outline<cr>
+nnoremap <silent> <space>t  :<C-u>CocFzfList symbols<cr>
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+nnoremap <silent> <space>p  :<C-u>CocFzfListResume<CR>
 
 " floaterm
 nnoremap <silent> <leader>fn :FloatermNew<CR>
@@ -161,6 +209,18 @@ tnoremap <silent> <C-k> <C-\><C-n>:FloatermPrev<CR>
 tnoremap <silent> <C-j> <C-\><C-n>:FloatermNext<CR>
 nnoremap <silent> <C-f> :FloatermToggle<CR>
 tnoremap <silent> <C-f> <C-\><C-n>:FloatermToggle<CR>
+
+" coc-git
+nmap <leader>gc <Plug>(coc-git-commit)
+nmap <leader>gp <Plug>(coc-git-prevchunk)
+nmap <leader>gp <Plug>(coc-git-nextchunk)
+nmap <leader>gs <Plug>(coc-git-chunkinfo)
+nmap <leader>ga :CocCommand git.chunkStage<CR>
+nmap <leader>gu :CocCommand git.chunkUndo<CR>
+omap ig <Plug>(coc-git-chunk-inner)
+xmap ig <Plug>(coc-git-chunk-inner)
+omap ag <Plug>(coc-git-chunk-outer)
+xmap ag <Plug>(coc-git-chunk-outer)
 
 " goyo+limelight
 nnoremap <silent> gO :Goyo<CR>:Limelight<CR>
