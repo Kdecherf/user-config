@@ -7,7 +7,7 @@ call vundle#begin()
    " let Vundle manage Vundle, required
    Plugin 'gmarik/Vundle.vim'
 
-   Plugin 'gkapfham/vim-vitamin-onec'
+   Plugin 'NLKNguyen/papercolor-theme'
 
    Plugin 'itchyny/lightline.vim'
    Plugin 'junegunn/fzf.vim'
@@ -83,16 +83,13 @@ set showcmd                   " show cmd
 set ruler                     " show cursor line number
 set shm=atI                   " cut large messages
 
+" Colorscheme configuration
 set background=dark
 if &term =~ '256color'
   " disable Background Color Erase (BCE)
   set t_ut=
 endif
-colorscheme vitaminonec
 
-" colorscheme overrides
-hi Search ctermbg=236 cterm=NONE
-hi Normal ctermfg=250
 
 vnoremap <C-X> <Esc>`.``gvP``P
 
@@ -103,6 +100,21 @@ nnoremap fs :GFiles?<CR>
 nnoremap T :Tags<CR>
 nnoremap t :BTags<CR>
 nnoremap s :Ag<CR>
+let g:PaperColor_Theme_Options = {
+  \   'theme': {
+  \     'default.dark': {
+  \       'override' : {
+  \         'cursorline' : ['#080808', '233'],
+  \         'linenumber_bg' : ['#080808', '233'],
+  \         'cursorcolumn' : ['#080808', '233'],
+  \         'visual_fg' : ['NONE', 'NONE'],
+  \         'visual_bg' : ['#8787af', '237']
+  \       }
+  \     }
+  \   }
+  \ }
+colorscheme PaperColor
+set colorcolumn=120
 
 highlight RedundantSpaces ctermbg=red
 match RedundantSpaces /\s\+$/
