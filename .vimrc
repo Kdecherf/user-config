@@ -18,8 +18,6 @@ call vundle#begin()
    Plugin 'tpope/vim-surround'
    Plugin 'dhruvasagar/vim-table-mode'
    Plugin 'nathanaelkane/vim-indent-guides'
-   Plugin 'mileszs/ack.vim'
-   Plugin 'tpope/vim-vinegar'
    Plugin 'editorconfig/editorconfig-vim'
    Plugin 'terryma/vim-multiple-cursors'
    Plugin 'tpope/vim-commentary'
@@ -149,10 +147,6 @@ nnoremap <silent> gf :call Cscope('3', expand('<cword>'))<CR>
 " git-messenger configuration
 let g:git_messenger_no_default_mappings = v:true
 nmap gm <Plug>(git-messenger)
-
-if executable('ag')
-  let g:ackprg = 'ag --path-to-ignore ~/.ignore --vimgrep'
-endif
 
 " jump to next conflict marker in git
 map <silent> <C-U> /^\(<\{7\}\\|>\{7\}\\|=\{7\}\\|\|\{7\}\)\( \\|$\)<CR>
