@@ -65,6 +65,8 @@ set showmatch
 set noshowmode
 filetype plugin on
 
+let mapleader = ","
+
 " Tabs
 set smartindent
 set autoindent
@@ -98,13 +100,6 @@ endif
 
 vnoremap <C-X> <Esc>`.``gvP``P
 
-nnoremap ; :Buffers<CR>
-nnoremap ff :Files<CR>
-nnoremap fg :GFiles<CR>
-nnoremap fs :GFiles?<CR>
-nnoremap T :Tags<CR>
-nnoremap t :BTags<CR>
-nnoremap s :Ag<CR>
 let g:PaperColor_Theme_Options = {
   \   'theme': {
   \     'default.dark': {
@@ -126,6 +121,21 @@ match RedundantSpaces /\s\+$/
 
 set tags=./.ctags.out;
 
+" fzf
+nnoremap <leader>; :Buffers<CR>
+nnoremap <C-p> :Files<CR>
+nnoremap <leader>fd :Files <C-r>=expand("%:h")<CR>/<CR>
+nnoremap <leader>fh :Files $HOME/<CR>
+nnoremap <leader>fg :GFiles<CR>
+nnoremap <leader>fs :GFiles?<CR>
+nnoremap <leader>T :Tags<CR>
+nnoremap <leader>t :BTags<CR>
+nnoremap <leader>s :Ag<CR>
+nnoremap <leader>S :FullAg<CR>
+let g:fzf_commits_log_options = '--graph --color=always --format="%C(yellow)%h%C(red)%d%C(reset) - %C(bold green)(%ar)%C(reset) %s %C(blue)<%an>%C(reset)"'
+let g:fzf_preview_window = 'right:50%'
+let g:fzf_layout = { 'window': 'call Centered_floating_window(v:true)' }
+command! -bang -nargs=* FullAg call fzf#vim#ag(<q-args>, ' --hidden --skip-vcs-ignores --ignore ".git" ' , <bang>0)
 
 " git-messenger configuration
 let g:git_messenger_no_default_mappings = v:true
@@ -230,6 +240,33 @@ omap ag <Plug>(coc-git-chunk-outer)
 xmap ag <Plug>(coc-git-chunk-outer)
 
 " goyo+limelight
-nnoremap <silent> gO :Goyo<CR>:Limelight<CR>
-nnoremap <silent> go :Goyo<CR>
+nnoremap <silent> <leader>gO :Goyo<CR>:Limelight<CR>
+nnoremap <silent> <leader>go :Goyo<CR>
 autocmd! User GoyoLeave Limelight!
+" functions
+function! Centered_floating_window(border)
+    let width = min([&columns - 4, max([120, &columns - 30])])
+    let height = min([&lines - 4, max([20, &lines - 20])])
+    let top = ((&lines - height) / 2) - 1
+    let left = (&columns - width) / 2
+    let opts = {'relative': 'editor', 'row': top, 'col': left, 'width': width, 'height': height, 'style': 'minimal'}
+
+    if a:border == v:true
+        let top = "┌" . repeat("─", width - 2) . "┐"
+        let mid = "│" . repeat(" ", width - 2) . "│"
+        let bot = "└" . repeat("─", width - 2) . "┘"
+        let lines = [top] + repeat([mid], height - 2) + [bot]
+        let s:buf = nvim_create_buf(v:false, v:true)
+        call nvim_buf_set_lines(s:buf, 0, -1, v:true, lines)
+        call nvim_open_win(s:buf, v:true, opts)
+        set winhl=Normal:Normal
+        let opts.row += 1
+        let opts.height -= 2
+        let opts.col += 2
+        let opts.width -= 4
+        call nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
+        au BufWipeout <buffer> exe 'bw '.s:buf
+    else
+        call nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
+    endif
+endfunction
