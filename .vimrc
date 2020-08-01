@@ -137,6 +137,13 @@ let g:fzf_preview_window = 'right:50%'
 let g:fzf_layout = { 'window': 'call Centered_floating_window(v:true)' }
 command! -bang -nargs=* FullAg call fzf#vim#ag(<q-args>, ' --hidden --skip-vcs-ignores --ignore ".git" ' , <bang>0)
 
+" indent-guides
+nnoremap <leader>ig :IndentGuidesToggle<CR>
+let g:indent_guides_start_level = 2
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=235
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=237
+
 " git-messenger configuration
 let g:git_messenger_no_default_mappings = v:true
 nmap gm <Plug>(git-messenger)
@@ -144,7 +151,11 @@ nmap gm <Plug>(git-messenger)
 " jump to next conflict marker in git
 map <silent> <C-U> /^\(<\{7\}\\|>\{7\}\\|=\{7\}\\|\|\{7\}\)\( \\|$\)<CR>
 
-let g:rainbow_active = 0
+let g:rainbow_active = 1
+" easy-align
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
 " coc
 let g:coc_disable_startup_warning = 1
 let g:coc_fzf_preview = 'right:50%'
@@ -227,6 +238,10 @@ tnoremap <silent> <C-j> <C-\><C-n>:FloatermNext<CR>
 nnoremap <silent> <C-f> :FloatermToggle<CR>
 tnoremap <silent> <C-f> <C-\><C-n>:FloatermToggle<CR>
 
+" Splits
+set splitbelow
+set splitright
+
 " coc-git
 nmap <leader>gc <Plug>(coc-git-commit)
 nmap <leader>gp <Plug>(coc-git-prevchunk)
@@ -243,6 +258,10 @@ xmap ag <Plug>(coc-git-chunk-outer)
 nnoremap <silent> <leader>gO :Goyo<CR>:Limelight<CR>
 nnoremap <silent> <leader>go :Goyo<CR>
 autocmd! User GoyoLeave Limelight!
+
+" tagbar
+nnoremap <leader>tb :TagbarToggle<CR>
+
 " functions
 function! Centered_floating_window(border)
     let width = min([&columns - 4, max([120, &columns - 30])])
