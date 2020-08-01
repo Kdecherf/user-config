@@ -10,6 +10,9 @@ call vundle#begin()
    Plugin 'NLKNguyen/papercolor-theme'
 
    Plugin 'itchyny/lightline.vim'
+   Plugin 'junegunn/goyo.vim'
+   Plugin 'junegunn/limelight.vim'
+   Plugin 'voldikss/vim-floaterm'
    Plugin 'junegunn/fzf.vim'
    Plugin 'junegunn/fzf'
    Plugin 'tpope/vim-surround'
@@ -156,3 +159,16 @@ map <silent> <C-U> /^\(<\{7\}\\|>\{7\}\\|=\{7\}\\|\|\{7\}\)\( \\|$\)<CR>
 
 let g:rainbow_active = 0
 let g:lsp_diagnostics_echo_cursor = 1
+
+
+" floaterm
+nnoremap <silent> <leader>fn :FloatermNew<CR>
+tnoremap <silent> <C-k> <C-\><C-n>:FloatermPrev<CR>
+tnoremap <silent> <C-j> <C-\><C-n>:FloatermNext<CR>
+nnoremap <silent> <C-f> :FloatermToggle<CR>
+tnoremap <silent> <C-f> <C-\><C-n>:FloatermToggle<CR>
+
+" goyo+limelight
+nnoremap <silent> gO :Goyo<CR>:Limelight<CR>
+nnoremap <silent> go :Goyo<CR>
+autocmd! User GoyoLeave Limelight!
