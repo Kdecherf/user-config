@@ -3,5 +3,6 @@
    "diagnostic.virtualTextCurrentLineOnly": false,
    "diagnostic.messageTarget": "echo",
 
-   "diagnostic.errorSign": "✘"
+  "diagnostic.errorSign": "✘",
+  "git.enableGutters": true
 }
