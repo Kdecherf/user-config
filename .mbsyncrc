@@ -3,7 +3,7 @@ BufferLimit 128m
 IMAPAccount kdecherf
 Host imap.fastmail.com
 User kevin@kdecherf.com
-PassCmd "pass fastmail.com | grep fujitaka | sed -e 's/.*: \\(.*\\)/\\1/'"
+PassCmd "gpg --decrypt /home/kdecherf/.mail/.fm.gpg"
 SSLType IMAPS
 
 IMAPStore kdecherf-remote

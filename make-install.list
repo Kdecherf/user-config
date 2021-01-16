@@ -1,7 +1,6 @@
 f .Xdefaults
 d .config/nvim
 d .config/rofi
-d .config/rofi-pass
 d .config/systemd/user
 f git/gitconfig .gitconfig
 f git/gitignore .gitignore
