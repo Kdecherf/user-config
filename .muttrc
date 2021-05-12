@@ -34,6 +34,11 @@ bind editor <Tab> complete-query
 bind editor ^T complete
 bind editor <space> noop
 
+unignore "X-CampaignID:"
+unignore "List-Id:"
+unignore "Feedback-Id:"
+unignore "X-SignalSpam-CID:"
+
 # Reply to all
 bind index,pager R group-reply
 
