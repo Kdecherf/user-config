@@ -92,6 +92,10 @@ macro index ln "L~N<enter>" "Limit to new messages"
 macro index lf "L~F<enter>" "Limit to flagged messages"
 macro index lt "L~Ytodo<enter>" "Limit to todo messages"
 macro index lx "<limit-current-thread><entire-thread>" "Limit to and reconstruct related thread"
+macro index lm "L~Ymailinglists<enter>" "Limit to messages from mailing lists"
+macro index lM "L!~Ymailinglists<enter>" "Hide messages from mailing lists"
+macro index lg "L~Ygithub<enter>" "Limit to messages from github"
+macro index lG "L!~Ygithub<enter>" "Hide messages from github"
 
 # Cheat code
 macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "Mark all messages as read"
@@ -101,10 +105,10 @@ bind index,pager x entire-thread
 bind index \eq vfolder-from-query
 bind index,pager , modify-labels
 macro index,pager X "<enter-command>unset resolve<enter><flag-message><modify-labels>!todo<enter><untag-pattern>.<enter><enter-command>set resolve<enter>" "Toggle todo and flagged tags"
+macro index,pager \CX "<enter-command>unset resolve<enter><tag-thread><flag-message><modify-labels>!todo<enter><untag-pattern>.<enter><enter-command>set resolve<enter>" "Toggle todo and flagged tags on thread"
+macro index,pager \es "<enter-command>unset wait_key<enter><shell-escape>mail-sync<enter><enter-command>set wait_key<enter>" "Launch a mbsync/notmuch synchronisation"
 
-# TODO: Sync email
-# macro index O "<shell-escape>offlineimap<enter>"           "run offlineimap to sync all mail"
-# macro index o "<shell-escape>offlineimap -qf INBOX<enter>" "run offlineimap to sync inbox"
+macro attach S "<save-entry><bol>~/Downloads/<eol>" "Save attachment to the Downloads folder"
 
 # Source theme
 source ~/.mutt/ivy-league.theme
