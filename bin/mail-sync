@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# This call is used to ensure upcoming notmuch tag have updated database
+# (renames)
+notmuch new
+
+mbsync kdecherf \
+&& notmuch new \
+&& notmuch tag --batch --input=/home/kdecherf/.mail/.notmuch-tags.rules \
+&& /home/kdecherf/.local/bin/notmuch-process.sh \
+&& notmuch tag --batch --input=/home/kdecherf/.mail/.notmuch-tags-housekeeping.rules

@@ -1,8 +1,0 @@
-[Unit]
-Description=mbsync service for full sync with notmuch hook
-After=network.target
-Conflicts=mail-sync.service
-
-[Service]
-Type=simple
-ExecStart=/usr/bin/sh -c 'mbsync -a && notmuch new && notmuch tag --batch --input=/home/kdecherf/.mail/.notmuch-tags.rules'

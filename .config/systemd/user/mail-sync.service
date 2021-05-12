@@ -1,8 +1,0 @@
-[Unit]
-Description=mbsync service for quick sync with notmuch hook
-After=network.target
-Conflicts=mail-sync-full.service
-
-[Service]
-Type=simple
-ExecStart=/usr/bin/sh -c 'mbsync kdecherf && notmuch new && notmuch tag --batch --input=/home/kdecherf/.mail/.notmuch-tags.rules'
