@@ -32,8 +32,12 @@
    kick = update-index --assume-unchanged
    unkick = update-index --no-assume-unchanged
    pe = format-patch -M -C --find-copies-harder --stdout
-   edit-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; vim `f`"
+   gbr = gone-branches
+   cbr = create-branch
+   edit-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; nvim -p `f`"
    add-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; git add `f`"
+   whereis = for-each-ref --contains
+   introduce = "!f() { git tag --contains ${1} | sort --human-numeric-sort | head -n1 ; }; f"
 
 [color]
    diff = auto
