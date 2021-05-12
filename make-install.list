@@ -1,4 +1,5 @@
 f .Xdefaults
+r bin .local/bin
 d .config/nvim
 d .config/rofi
 d .config/systemd/user

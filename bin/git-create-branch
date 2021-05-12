@@ -1,0 +1,12 @@
+#!/bin/bash
+
+branch=${1:-$(uuidgen | cut -d- -f1)}
+
+git rev-parse --show-toplevel 2>&1 >/dev/null
+if [ $? -gt 0 ]; then
+   echo "not a git repository"
+   exit 2
+fi
+
+git branch ${branch} &&
+   git checkout ${branch}
