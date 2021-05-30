@@ -8,8 +8,7 @@ call vundle#begin()
    Plugin 'gmarik/Vundle.vim'
 
    " Colorscheme and related
-   Plugin 'NLKNguyen/papercolor-theme'
-   Plugin 'luochen1990/rainbow'
+   Plugin 'tomasiser/vim-code-dark'
 
    " Interface
    Plugin 'itchyny/lightline.vim'
@@ -38,7 +37,7 @@ call vundle#begin()
 
    " coc
    Plugin 'antoinemadec/coc-fzf'
-   Plugin 'neoclide/coc.nvim', {'branch': 'release'}
+   Plugin 'neoclide/coc.nvim', {'branch': 'release', 'do': 'yarn install --frozen-lockfile'}
 
    " Git
    Plugin 'rhysd/git-messenger.vim'
@@ -100,20 +99,7 @@ if &term =~ '256color'
   set t_ut=
 endif
 
-let g:PaperColor_Theme_Options = {
-  \   'theme': {
-  \     'default.dark': {
-  \       'override' : {
-  \         'cursorline' : ['#080808', '233'],
-  \         'linenumber_bg' : ['#080808', '233'],
-  \         'cursorcolumn' : ['#080808', '233'],
-  \         'visual_fg' : ['NONE', 'NONE'],
-  \         'visual_bg' : ['#8787af', '237']
-  \       }
-  \     }
-  \   }
-  \ }
-colorscheme PaperColor
+colorscheme codedark
 set colorcolumn=120
 
 highlight RedundantSpaces ctermbg=red
