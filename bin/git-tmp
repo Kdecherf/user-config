@@ -1,0 +1,70 @@
+#!/bin/bash
+
+set -e
+
+case ${1} in
+   detach)
+      shift
+      _cd=false
+      _rm=false
+      while getopts "gr" opt ; do
+         case ${opt} in
+            g)
+               _cd=true
+               ;;
+            r)
+               _rm=true
+               ;;
+         esac
+      done
+      shift $((OPTIND-1))
+      _ref=$1
+      if [ -z ${_ref} ]; then
+         >&2 echo "detach: specify a ref"
+         exit 1
+      fi
+      _tmpDir=$(mktemp -d)
+      echo "Setting up a worktree for detached ${_ref} at ${_tmpDir}"
+      git worktree add --detach ${_tmpDir} ${_ref}
+      if $_cd ; then
+         sh -c "cd ${_tmpDir} && $SHELL"
+         if $_rm ; then
+            echo "Removing worktree at ${_tmpDir}"
+            git worktree remove ${_tmpDir}
+         fi
+      fi
+      ;;
+   spawn)
+      shift
+      _cd=false
+      _rm=false
+      while getopts "gr" opt ; do
+         case ${opt} in
+            g)
+               _cd=true
+               ;;
+            r)
+               _rm=true
+               ;;
+         esac
+      done
+      shift $((OPTIND-1))
+      _upstream=$1
+      if [ -z ${_upstream} ]; then
+         >&2 echo "spawn: specify an upstream"
+         exit 1
+      fi
+      _tmpDir=$(mktemp -d)
+      _branch=${2:-$(uuidgen | cut -d- -f1)}
+      echo "Creating a branch ${_branch} from ${_upstream}"
+      echo "Setting up a new workspace at ${_tmpDir}"
+      git worktree add -B ${_branch} ${_tmpDir} ${_upstream}
+      if $_cd ; then
+         sh -c "cd ${_tmpDir} && $SHELL"
+         if $_rm ; then
+            echo "Removing worktree at ${_tmpDir}"
+            git worktree remove ${_tmpDir}
+         fi
+      fi
+      ;;
+esac
