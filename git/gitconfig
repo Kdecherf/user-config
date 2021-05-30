@@ -38,6 +38,8 @@
    add-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; git add `f`"
    whereis = for-each-ref --contains
    introduce = "!f() { git tag --contains ${1} | sort --human-numeric-sort | head -n1 ; }; f"
+   wls = worktree list
+   wrm = worktree remove
 
 [color]
    diff = auto
