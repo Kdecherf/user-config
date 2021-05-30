@@ -56,6 +56,8 @@ call vundle#begin()
    Plugin 'tpope/vim-salve'
    Plugin 'tpope/vim-fireplace'
 
+   Plugin 'antoinemadec/FixCursorHold.nvim'
+
    " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
@@ -283,3 +285,8 @@ function! Centered_floating_window(border)
         call nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
     endif
 endfunction
+
+nmap <leader>ed :CocCommand explorer<CR>
+nmap <leader>ef :CocCommand explorer --position floating<CR>
+
+let g:cursorhold_updatetime = 100
