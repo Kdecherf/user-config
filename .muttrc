@@ -23,6 +23,8 @@ set mailcap_path = ~/.mutt/mailcap
 
 set send_charset="us-ascii:utf-8"
 
+set rfc2047_parameters = yes
+
 ignore "Authentication-Results:"
 ignore "DomainKey-Signature:"
 ignore "DKIM-Signature:"
@@ -108,7 +110,7 @@ macro index,pager X "<enter-command>unset resolve<enter><flag-message><modify-la
 macro index,pager \CX "<enter-command>unset resolve<enter><tag-thread><flag-message><modify-labels>!todo<enter><untag-pattern>.<enter><enter-command>set resolve<enter>" "Toggle todo and flagged tags on thread"
 macro index,pager \es "<enter-command>unset wait_key<enter><shell-escape>mail-sync<enter><enter-command>set wait_key<enter>" "Launch a mbsync/notmuch synchronisation"
 
-macro attach S "<save-entry><bol>~/Downloads/<eol>" "Save attachment to the Downloads folder"
+macro attach S "<tag-prefix><save-entry><kill-line>~/Downloads/<enter>a" "Save tagged attachments to the Downloads folder"
 
 # Source theme
 source ~/.mutt/ivy-league.theme
