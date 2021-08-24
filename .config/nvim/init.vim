@@ -23,6 +23,7 @@ call plug#begin('~/.local/share/nvim/plugged')
    Plug 'junegunn/fzf.vim'
    Plug 'junegunn/fzf'
    Plug 'editorconfig/editorconfig-vim'
+   Plug 'jamessan/vim-gnupg'
 
    " Productivity
    Plug 'lambdalisue/reword.vim'
