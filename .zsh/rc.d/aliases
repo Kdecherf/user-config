@@ -7,7 +7,6 @@ alias egrep='egrep --colour=auto'
 alias shaolan='ssh -t shaolan "tmux a"'
 
 # Shortcuts
-alias e='nvim' # XXX there's a bug when using $EDITOR
 alias g='git'
 alias gd='gradle'
 alias tmux='tmux -2'
