@@ -1,3 +1,33 @@
 #!/bin/bash
 
-git branch -vv | grep -E "\[[[:graph:]]+/[[:graph:]]+: gone\]" | awk -F' ' '{print $1}'
+set -e
+
+while getopts "gmn" opt ; do
+   case ${opt} in
+      g)
+         _gone=true
+         ;;
+      m)
+         _merged=true
+         ;;
+      n)
+         _dryrun=true
+         ;;
+   esac
+done
+
+if ${_gone:-false} ; then
+   _goneBranches=$(git branch --list -vv | grep -E "\[[[:graph:]]+/[[:graph:]]+: gone\]" | awk -F' ' '{print $1}')
+fi
+
+if ${_merged:-false} ; then
+   _mergedBranches=$(git branch --list --merged | grep -Ev '^\*|master')
+fi
+
+for _branch in ${_goneBranches} ${_mergedBranches} ; do
+   echo $_branch
+
+   if ! ${_dryrun:-false} ; then
+      git branch -D ${_branch}
+   fi
+done

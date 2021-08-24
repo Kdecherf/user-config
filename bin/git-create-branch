@@ -9,4 +9,4 @@ if [ $? -gt 0 ]; then
 fi
 
 git branch ${branch} &&
-   git checkout ${branch}
+   git switch ${branch}

@@ -12,4 +12,4 @@ if [ $? -gt 0 ]; then
 fi
 
 git fetch origin pull/${1}/head:remotes/pr/${1} &&
-   git checkout remotes/pr/${1}
+   git switch -d remotes/pr/${1}
