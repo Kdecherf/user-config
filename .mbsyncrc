@@ -3,7 +3,7 @@ BufferLimit 128m
 IMAPAccount kdecherf
 Host imap.fastmail.com
 User kevin@kdecherf.com
-PassCmd "gpg --decrypt /home/kdecherf/.mail/.fm.gpg"
+PassCmd "pass fastmail/app/password"
 SSLType IMAPS
 
 IMAPStore kdecherf-remote
