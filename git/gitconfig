@@ -27,6 +27,7 @@
    add-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; git add `f`"
    wls = worktree list
    wrm = worktree remove
+   merge-into = "!f() { git fetch . HEAD:${1} ; }; f"
    # Custom commands
    gbr = gone-branches
    cbr = create-branch
