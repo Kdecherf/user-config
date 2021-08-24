@@ -1,1 +1,1 @@
-.zsh/env
+.zsh/env.zsh

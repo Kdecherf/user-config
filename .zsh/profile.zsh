@@ -11,6 +11,6 @@ export HIST_IGNORE_SPACE=y
 [[ -r /etc/profile.env ]] && \
 	source /etc/profile.env
 
-source ${ZSH_HOME}/utils/source-dir profile
+source ${ZSH_HOME}/utils/source-dir.zsh profile
 
 cd ~

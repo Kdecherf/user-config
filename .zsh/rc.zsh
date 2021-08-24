@@ -8,5 +8,5 @@ setopt HIST_IGNORE_SPACE
 chpwd_functions=()
 precmd_functions=()
 preexec_functions=()
-source ${ZSH_HOME}/utils/source-dir rc
-source ${ZSH_HOME}/utils/source-dir profile
+source ${ZSH_HOME}/utils/source-dir.zsh rc
+source ${ZSH_HOME}/utils/source-dir.zsh profile

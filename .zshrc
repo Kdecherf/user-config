@@ -1,1 +1,1 @@
-.zsh/rc
+.zsh/rc.zsh

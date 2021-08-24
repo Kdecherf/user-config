@@ -1,1 +1,1 @@
-.zsh/profile
+.zsh/profile.zsh
