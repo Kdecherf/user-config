@@ -16,8 +16,8 @@ Flatten .
 SubFolders Verbatim
 
 Channel kdecherf
-Master :kdecherf-remote:
-Slave :kdecherf-local:
+Far :kdecherf-remote:
+Near :kdecherf-local:
 Patterns * "!*Archive/%"
 Create Both
 Expunge Both
@@ -25,8 +25,8 @@ SyncState *
 CopyArrivalDate yes
 
 Channel kdecherf-archive
-Master :kdecherf-remote:
-Slave :kdecherf-local:
+Far :kdecherf-remote:
+Near :kdecherf-local:
 Patterns "*Archive/%"
 Create Both
 Expunge Both
