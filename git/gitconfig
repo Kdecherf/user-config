@@ -8,6 +8,7 @@
    pushInsteadOf = github:
 
 [alias]
+   # Daily aliases
    a = add
    d = rm
    p = push
@@ -20,26 +21,28 @@
    co = checkout
    cp = cherry-pick
    df = diff
+   sh = stash
+   shup = stash pop
+   edit-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; vi -p `f`"
+   add-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; git add `f`"
+   wls = worktree list
+   wrm = worktree remove
+   # Custom commands
+   gbr = gone-branches
+   cbr = create-branch
+   # Uncommon aliases
    dfs = diff --stat
    lg = log -p
    who = shortlog -s --
-   sh = stash
-   shup = stash pop
-   fap = format-patch HEAD~
-   fapfap = format-patch
    ds = describe
    tk = log --name-status --pretty=oneline
    kick = update-index --assume-unchanged
    unkick = update-index --no-assume-unchanged
+   fap = format-patch HEAD~
+   fapfap = format-patch
    pe = format-patch -M -C --find-copies-harder --stdout
-   gbr = gone-branches
-   cbr = create-branch
-   edit-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; nvim -p `f`"
-   add-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; git add `f`"
    whereis = for-each-ref --contains
    introduce = "!f() { git tag --contains ${1} | sort --human-numeric-sort | head -n1 ; }; f"
-   wls = worktree list
-   wrm = worktree remove
 
 [color]
    diff = auto
