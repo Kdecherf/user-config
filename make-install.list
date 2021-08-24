@@ -16,8 +16,6 @@ f .muttrc
 f .ssh/config
 f .tigrc
 f .tmux.conf
-d .vim
-f .vimrc
 f .xinitrc
 l .zlogin
 l .zlogout
