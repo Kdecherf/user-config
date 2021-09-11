@@ -13,6 +13,7 @@
    d = rm
    p = push
    f = fetch --all --prune
+   tg = tag -n --sort v:refname
    st = status -sb
    ci = commit -s -v
    ca = commit -s -v --amend
@@ -42,6 +43,7 @@
    fap = format-patch HEAD~
    fapfap = format-patch
    pe = format-patch -M -C --find-copies-harder --stdout
+   review-staged = "!f() { git diff --cached --name-status | cut -f2 ; }; nvim -m -p `f`"
    whereis = for-each-ref --contains
    introduce = "!f() { git tag --contains ${1} | sort --human-numeric-sort | head -n1 ; }; f"
 
@@ -52,9 +54,10 @@
    ui = true
 [core]
    eol = lf
-	excludesfile = /home/kdecherf/.gitignore
+   excludesfile = /home/kdecherf/.gitignore
 [merge]
    tool = vimdiff
+   conflictstyle = diff3
 [mergetool "fugitive"]
    cmd = vim -f -c \"Gdiff\" \"$MERGED\"
 
