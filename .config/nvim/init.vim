@@ -288,3 +288,6 @@ nmap <leader>ed :CocCommand explorer<CR>
 nmap <leader>ef :CocCommand explorer --position floating<CR>
 
 let g:cursorhold_updatetime = 100
+
+set cursorline
+set cursorcolumn
