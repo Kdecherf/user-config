@@ -1,0 +1,14 @@
+#!/bin/bash
+
+REPO=$1
+paludis_config=/etc/paludis/repositories/$REPO.conf
+local_repo=$(sed -n -e '{s@.*local: git+file://\(.*\)@\1@p}' $paludis_config)
+
+(
+  cd $local_repo
+  echo "Waiting…"
+  while inotifywait -q -e modify .git/logs/HEAD ; do
+    cave sync -s local -r $(git rev-parse HEAD) ${REPO}
+    echo "Waiting…"
+  done
+)

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+_tmpDir=$(mktemp -d)
+sh -c "cd ${_tmpDir} && ${SHELL:-/bin/zsh}"
+rm -rf ${_tmpDir}

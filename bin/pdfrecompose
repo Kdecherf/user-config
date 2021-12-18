@@ -1,0 +1,30 @@
+#!/bin/bash
+
+which pdfseparate >/dev/null || { >&2 echo "Please install poppler-utils"; exit 1; }
+which mutool >/dev/null || { >&2 echo "Please install mupdf"; exit 1; }
+
+_oddFile=$1
+_evenFile=$2
+_outputFile=${3:-output.pdf}
+
+if [[ -z "${_oddFile}" || -z "{$_evenFile}" ]]; then
+   >&2 echo "Missing arguments"
+   exit 1
+fi
+
+_tmpDir=$(mktemp -d)
+
+(
+   cd ${_tmpDir}
+
+   echo "Splitting odd pages…"
+   pdfseparate "${_oddFile}" '%d-A.pdf'
+
+   echo "Splitting even pages…"
+   pdfseparate "${_evenFile}" '%d-B.pdf'
+)
+
+echo "Merging pages…"
+find ${_tmpDir} -name "?-?.pdf" | sort | xargs mutool merge -o "${_outputFile}"
+
+rm -rf ${_tmpDir}
