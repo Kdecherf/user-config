@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ -z "${1}" ]; then
+  exit 1
+fi
+
+outfile=${2:-${1%%.pdf}-compress.pdf}
+
+gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.7 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -sOutputFile="${outfile}" "${1}"

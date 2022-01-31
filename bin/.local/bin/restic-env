@@ -1,0 +1,21 @@
+#!/bin/zsh
+
+b2_credentials=$(pass backblaze.com | grep -A3 "master key")
+
+export B2_ACCOUNT_ID=$(echo ${b2_credentials} | grep "keyid" | awk -F' ' '{print $2}')
+export B2_ACCOUNT_KEY=$(echo ${b2_credentials} | grep "appkey" | awk -F' ' '{print $2}')
+
+repo=$1
+
+case $repo in
+   shaolan|nadeshiko|eriol|fujitaka|sakura)
+      export RESTIC_REPOSITORY=b2:tomoeda-${repo}
+      export RESTIC_PASSWORD=$(pass tomoeda/${repo}/restic/password | head -n 1)
+      ;;
+   *)
+      repo=
+      >&2 echo "Warning: you didn't specify a repository"
+      ;;
+esac
+
+export PS1="(restic:${repo:-}) $PS1"

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+CSCOPE_FILE=.cscope.files
+CSCOPE_OUT=.cscope.out
+CTAGS_OUT=.ctags.out
+
+cscope -b -i ${CSCOPE_FILE} -f ${CSCOPE_OUT}
+ctags -L ${CSCOPE_FILE} -f ${CTAGS_OUT}
