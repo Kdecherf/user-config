@@ -3,19 +3,21 @@ set from="kevin@kdecherf.com"
 set realname="Kevin Decherf"
 set signature="~/.mutt/kdecherf.signature"
 
-alternates "me@kdecherf.com|kdecherf@gmail.com"
+alternates "me@kdecherf.com|kdecherf@gmail.com|kdecherf@orange.fr|kdecherf@wanadoo.fr"
 
 set nm_default_uri="notmuch:///home/kdecherf/.mail/kdecherf"
 set virtual_spoolfile=yes
 virtual-mailboxes \
       "INBOX"        "notmuch://?query=folder:INBOX" \
-      "Sent"        "notmuch://?query=folder:Sent" \
-      "Archive"        "notmuch://?query=folder:Archive" \
-      "Archive.2018"        "notmuch://?query=folder:Archive.2018" \
       "Drafts"        "notmuch://?query=folder:Drafts" \
-      "Trash"        "notmuch://?query=folder:Trash" \
-      "List: Starred"      "notmuch://?query=is:flagged" \
-      "List: Debian"       "notmuch://?query=to:debian-security-announce@lists.debian.org" \
+      "Sent"         "notmuch://?query=folder:Sent" \
+      "Trash"         "notmuch://?query=folder:Trash"
+
+virtual-mailboxes "Starred"      "notmuch://?query=is:flagged and -is:deleted" \
+      "Starred.Archived"      "notmuch://?query=is:flagged and -is:mailinglists and -is:inbox and -is:deleted" \
+      "Starred.Lists"      "notmuch://?query=is:flagged and is:mailinglists and -is:deleted" \
+      "Starred.Todo"      "notmuch://?query=is:todo and -is:deleted" \
+      "Archive"      "notmuch://?query=folder:Archive" \
 
 # Account-specific folders
 set postponed="+kdecherf/Drafts"
@@ -35,7 +37,7 @@ macro index,pager ga "<change-vfolder>Archive<enter>" "Go to All Mail"
 macro index,pager gd "<change-vfolder>Drafts<enter>" "Go to Drafts"
 macro index,pager gs "<change-vfolder>Sent<enter>" "Go to Sent Mail"
 macro index,pager gt "<change-vfolder>Trash<enter>" "Go to Trash"
-macro index,pager gS "<change-vfolder>List: Starred<enter>" "Go to Starred"
+macro index,pager gS "<change-vfolder>Starred<enter>" "Go to Starred"
 
 # GPG
 set pgp_encrypt_only_command="gpg --batch --quiet --no-verbose --output - --encrypt --textmode --armor --always-trust --encrypt-to 0xA81E6E2F -r %r %f"

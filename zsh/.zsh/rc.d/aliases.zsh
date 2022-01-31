@@ -4,13 +4,14 @@ alias lo='ls -ogh'
 alias ll='ls -lh'
 alias grep='grep --colour=auto'
 alias egrep='egrep --colour=auto'
-alias shaolan='ssh -t shaolan "tmux a"'
+alias batp='bat --style=plain'
 
 # Shortcuts
 alias g='git'
-alias gd='gradle'
 alias tmux='tmux -2'
 alias syser='systemctl --user'
+
+alias vi='nvim'
 
 ssh() {
    gpg-connect-agent /bye 2>&1 > /dev/null
@@ -22,5 +23,3 @@ ssh() {
 }
 
 alias fssh='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
-
-alias ignite='pkexec ignite'

@@ -52,6 +52,8 @@ call plug#begin('~/.local/share/nvim/plugged')
    Plug 'fatih/vim-go'
    Plug 'plasticboy/vim-markdown'
    Plug 'hashivim/vim-terraform'
+   Plug 'vim-scripts/nginx.vim'
+   Plug 'LnL7/vim-nix'
    " clojure
    Plug 'tpope/vim-salve'
    Plug 'tpope/vim-fireplace'

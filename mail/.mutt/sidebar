@@ -4,7 +4,7 @@ set sidebar_width = 20
 set sidebar_short_path = yes
 set sidebar_folder_indent = yes
 set sidebar_indent_string = " "
-set sidebar_format = "%B%* %?N?%N/?%S"
+set sidebar_format = "%D%* %?N?%N/?%S"
 color sidebar_new color166 default
 
 macro index b '<enter-command>toggle sidebar_visible<enter><refresh>'
@@ -14,4 +14,5 @@ bind index B bounce-message
 
 bind index,pager \CP sidebar-prev
 bind index,pager \CN sidebar-next
-macro index,pager \CO '<sidebar-open><limit>~N<enter>'
+bind index,pager \CO sidebar-open
+# macro index,pager \CO '<sidebar-open><limit>~N<enter>'

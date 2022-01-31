@@ -3,5 +3,9 @@
 .cscope.out
 .ctags.out
 
+Session.vim
+
+.vscode
+
 # Swap
 [._]*.sw[a-p]

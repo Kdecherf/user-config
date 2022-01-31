@@ -5,7 +5,7 @@
 set mbox_type=Maildir
 set folder = ~/.mail
 
-set editor = "vim"
+set editor = "nvim"
 
 set move = no
 set timeout = 3          # idle time before scanning

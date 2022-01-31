@@ -71,3 +71,6 @@
    textconv = gpg --no-tty --decrypt --quiet
 [rerere]
    enabled = true
+[diff "minjs"]
+   textconv = /home/kdecherf/Workspace/Following/js-beautify/js/bin/js-beautify.js
+   cachetextconv = true
