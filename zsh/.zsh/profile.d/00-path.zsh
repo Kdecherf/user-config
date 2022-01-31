@@ -1,25 +1,9 @@
 typeset -U paths
 
-
 paths=(
       $HOME/.local/bin
-      $HOME/.gem/ruby/2.2/bin
-   )
-
-if [[ -d "/usr/games/bin" ]]; then
-   paths+="/usr/games/bin"
-elif [[ -d "/usr/games" ]]; then
-   paths+="/usr/games"
-fi
-
-paths+=(
-      /usr/bin
-      /usr/sbin
-      /bin
-      /sbin
       $path
-   )
-
+)
 
 path=()
 for p in $paths; [[ -d $p ]] && path+=$p

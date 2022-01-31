@@ -1,9 +1,5 @@
-export VISUAL=vi
+export VISUAL=nvim
 export EDITOR=$VISUAL
 
-export PAGER=less
-export MANPAGER=less
-
-if [[ -n "$DISPLAY" ]]; then
-    export TERMINAL=germinal
-fi
+export PAGER='bat -p'
+export MANPAGER='bat -p'
