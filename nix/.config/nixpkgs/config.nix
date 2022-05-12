@@ -5,7 +5,9 @@
       name = "fujitaka-packages";
       paths = [
         bat
+        bitwarden-cli
         bottom
+        calibre
         chromium
         diff-so-fancy
         dive
@@ -14,10 +16,12 @@
         firefox
         font-awesome
         fzf
+        gimp
         git
         gnupg
         homebank
         isync
+        jq
         material-design-icons
         material-icons
         msmtp
@@ -25,6 +29,7 @@
         neomutt
         neovim
         nextcloud-client
+        ngrok
         nix
         nodejs
         notmuch
@@ -47,8 +52,14 @@
         tig
         tmux
         tree
+        vagrant
         vscode
+        w3m
+        wireshark-qt
+        xdotool
+        xsel
         yarn
+        yt-dlp
         zsh
       ];
     };
