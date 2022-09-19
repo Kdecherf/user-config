@@ -3,14 +3,18 @@
 @include "/home/kdecherf/.local/bin/hb-functions.awk"
 
 # 1: Operation date
-# 2: Accounting date (ignore)
-# 3: Category (ignore)
-# 4: Type
-# 5: Operation label
-# 6: Simplified label
-# 7: Misc information
-# 8: Amount
-# 9: Cleared (ignore)
+# 2: Simplified label
+# 3: Operation label
+# 4: Reference
+# 5: Misc information
+# 6: Type
+# 7: Category (ignore)
+# 8: Sub-category (ignore)
+# 9: Debit
+# 10: Credit
+# 11: Accounting date (ignore)
+# 12: Date (ignore)
+# 13: Cleared (ignore)
 
 # Output CSV format
 # 1: Date
@@ -30,6 +34,6 @@ BEGIN {
 {
    if (NR != 1) {
       # Date;0;;Simplified Label;Operation label + Misc information;Amount
-      printf("%s;0;;%s;%s %s;%s;;\n", $1, $6, $5, $7, $8);
+      printf("%s;0;;%s;%s %s;%s;;\n", $1, $2, $3, $5, $9 + $10);
    }
 }
