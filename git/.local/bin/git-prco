@@ -11,5 +11,5 @@ if [ $? -gt 0 ]; then
    exit 2
 fi
 
-git fetch origin pull/${1}/head:remotes/pr/${1} &&
+git fetch --force origin pull/${1}/head:remotes/pr/${1} &&
    git switch -d remotes/pr/${1}
