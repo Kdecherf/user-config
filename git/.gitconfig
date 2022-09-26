@@ -2,9 +2,8 @@
    name = Kevin Decherf
    email = kevin@kdecherf.com
    signingkey = 0x6B4EBA7A
-[url "git://github.com/"]
-   insteadOf = github:
 [url "git+ssh://git@github.com/"]
+   insteadOf = github:
    pushInsteadOf = github:
 
 [alias]
@@ -24,7 +23,7 @@
    df = diff
    sh = stash
    shup = stash pop
-   edit-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; vi -p `f`"
+   edit-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; nvim -p `f`"
    add-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; git add `f`"
    wls = worktree list
    wrm = worktree remove
