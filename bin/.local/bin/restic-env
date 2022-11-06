@@ -1,4 +1,6 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
+
+# Usage: $ . restic-env {environment}
 
 b2_credentials=$(pass backblaze.com | grep -A3 "master key")
 
