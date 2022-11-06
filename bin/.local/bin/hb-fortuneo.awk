@@ -2,6 +2,7 @@
 
 @include "/home/kdecherf/.local/bin/hb-functions.awk"
 
+# HistoriqueFortuneo (export espace client)
 # 1: Operation date
 # 2: Value date (ignore)
 # 3: Label
@@ -21,11 +22,31 @@
 
 BEGIN {
    FS=";"
+   RS="\r\n"
 }
 
+# HistoriqueFortuneo (export espace client)
+# {
+#    if (NR != 1) {
+#       # Date;0;;Simplified Label;Operation label + Misc information;Amount
+#       printf("%s;0;;%s;%s;%s;;\n", $1, $3, $3 , $4 + $5);
+#    }
+# }
+
+# Boucle export woob
 {
-   if (NR != 1) {
-      # Date;0;;Simplified Label;Operation label + Misc information;Amount
-      printf("%s;0;;%s;%s;%s;;\n", $1, $3, $3 , $4 + $5);
+   if (NR > 1) {
+      if ($2 !~ /^CARTE [0-9]{2}\/[0-9]{2}/) {
+         printf("%s;0;;%s;%s;%s;;\n", $1, $2, $2, $3);
+      } else {
+         buckets[$1] += $3
+      }
+   }
+}
+
+END {
+   for (pos in buckets) {
+      label = "Cb Diff"
+      printf("%s;0;;%s;%s;%.2f;;\n", pos, label, label, buckets[pos])
    }
 }
