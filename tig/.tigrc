@@ -4,7 +4,12 @@ bind status I !git add -i %(file)
 bind status P ?git add -p %(file)
 bind status + !>git commit -s --amend
 
-bind main = !git commit -s --fixup %(commit)
+bind main = !>git commit -s --fixup %(commit)
 bind main R !git rebase --autosquash -i %(commit)
+bind main <Ctrl-r> !git rebase -i %(commit)
 
 bind main u ?>git revert %(commit)
+
+bind generic Z :!git log --no-patch -G %(prompt) -- %(file)
+
+bind status l :!git log -- %(file)
