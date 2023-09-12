@@ -1,6 +1,6 @@
 .PHONY: install
 
-PACKAGES = X11 bin fontconfig git i3 mail nix nvim polybar rofi tig tmux zsh
+PACKAGES = X11 bin fontconfig git i3 kitty mail nix nvim polybar rofi tig tmux zsh
 
 install:
 	for i in $(PACKAGES) ; do \
