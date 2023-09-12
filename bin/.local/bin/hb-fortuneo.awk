@@ -1,7 +1,5 @@
 #!/usr/bin/awk -f
 
-@include "/home/kdecherf/.local/bin/hb-functions.awk"
-
 # HistoriqueFortuneo (export espace client)
 # 1: Operation date
 # 2: Value date (ignore)
@@ -37,7 +35,22 @@ BEGIN {
 {
    if (NR > 1) {
       if ($2 !~ /^CARTE [0-9]{2}\/[0-9]{2}/) {
-         printf("%s;0;;%s;%s;%s;;\n", $1, $2, $2, $3);
+         tag=""
+         if ($4 != "") {
+            amount=$4
+            date=$1
+            rdate=$2
+            label=$3
+
+            year=substr(date, 3, 2)
+            month=substr(date, 6, 2)
+            tag=sprintf("CB:%s%s", year, month)
+         } else {
+            amount=$3
+            rdate=$1
+            label=$2
+         }
+         printf("%s;0;;%s;%s;%s;;%s\n", rdate, label, label, amount, tag);
       } else {
          buckets[$1] += $3
       }
@@ -47,6 +60,9 @@ BEGIN {
 END {
    for (pos in buckets) {
       label = "Cb Diff"
-      printf("%s;0;;%s;%s;%.2f;;\n", pos, label, label, buckets[pos])
+      year=substr(pos, 3, 2)
+      month=substr(pos, 6, 2)
+      tag=sprintf("CB:%s%s", year, month)
+      printf("%s;0;;%s;%s;%.2f;;%s\n", pos, label, label, buckets[pos], tag)
    }
 }
