@@ -10,6 +10,7 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+set $term kitty
 
 font pango:dejavu sans mono,font awesome 5 free regular 8
 
@@ -17,7 +18,7 @@ font pango:dejavu sans mono,font awesome 5 free regular 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvt -e /home/kdecherf/.nix-profile/bin/zsh
+bindsym $mod+Return exec $term
 
 bindsym $mod+o exec /home/kdecherf/.local/bin/lock-session
 
