@@ -1,8 +1,0 @@
-{
-   "diagnostic.virtualText": true,
-   "diagnostic.virtualTextCurrentLineOnly": false,
-   "diagnostic.messageTarget": "echo",
-
-  "diagnostic.errorSign": "✘",
-  "git.enableGutters": true
-}
