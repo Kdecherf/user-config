@@ -28,7 +28,7 @@ secondary = #e60053
 alert = #bd2c40
 
 [bar/example]
-monitor = ${env:MONITOR:DP-0}
+monitor = ${env:MONITOR:eDP-1}
 width = 100%
 height = 27
 ;offset-x = 1%
@@ -52,16 +52,14 @@ module-margin-left = 1
 module-margin-right = 2
 
 font-0 = "Sarasa Term CL:size=10"
-font-1 = "Font Awesome 5 Free:style=Regular:size=10"
-font-2 = "Font Awesome 5 Free:style=Solid:size=10"
-font-3 = "Noto Emoji:style=Regular:size=10"
+font-1 = "Font Awesome 7 Free:style=Regular:size=10"
+font-2 = "Font Awesome 7 Free:style=Solid:size=10"
+font-3 = "Noto Color Emoji:style=Regular:size=10"
 
 modules-left = i3
-modules-center = 
-modules-right = eth pulseaudio memory cpu temperature date powermenu
+modules-center = date
+modules-right = eth pulseaudio memory cpu temperature battery tray powermenu
 
-tray-position = right
-tray-padding = 2
 ;tray-background = #0063ff
 
 ;wm-restack = bspwm
@@ -196,7 +194,9 @@ type = internal/temperature
 
 interval = 1
 
-hwmon-path = /sys/devices/pci0000:00/0000:00:03.1/0000:08:00.0/hwmon/hwmon0/temp1_input
+thermal-zone = 0
+
+zone-type = x86_pkg_temp
 
 warn-temperature = 70
 base-temperature = 20
@@ -246,6 +246,17 @@ menu-2-0 = power off
 menu-2-0-exec = sudo poweroff
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
+
+[module/tray]
+type = internal/tray
+
+tray-padding = 2px
+
+[module/battery]
+type = internal/battery
+
+battery = BAT0
+adapter = AC0
 
 [settings]
 screenchange-reload = true

@@ -12,7 +12,7 @@
 set $mod Mod4
 set $term kitty
 
-font pango:dejavu sans mono,font awesome 5 free regular 8
+font pango:dejavu sans mono,font awesome 7 free regular 8
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -20,7 +20,7 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec $term
 
-bindsym $mod+o exec /home/kdecherf/.local/bin/lock-session
+bindsym $mod+o exec i3lock
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -178,7 +178,7 @@ bindsym --release Shift+Print exec --no-startup-id scrot '%Y-%m-%d-%H%M%S_$wx$h.
 
 for_window [class="(?i)pinentry"] floating enable
 
-exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
-exec --no-startup-id /usr/libexec/gsd-xsettings
-exec --no-startup-id redshift -l 47.22:-1.56
-exec --no-startup-id polybar example
+#exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
+#exec --no-startup-id /usr/libexec/gsd-xsettings
+#exec --no-startup-id redshift -l 47.22:-1.56
+#exec --no-startup-id polybar example
